@@ -3,8 +3,9 @@
 import sys, r2pipe
 
 from api import Api
-from api_classes import FunctionParam
+from api_classes import FunctionArgument, FunctionResult
 from classes import Instruction, RelocationTable, MemoryStack
+from utilities import *
 
 class Emulator:
     def __init__(self, file, memory, api):
@@ -50,9 +51,11 @@ class Emulator:
         return self.__r2.cmd(f'aer {register}').strip()
 
     def __set_register(self, register, value):
+        if type(value) == bytes: value = value.hex()        
         self.__r2.cmd(f'aer {register}={value}')
 
     def __write_bytes(self, string, address):
+        if type(string) == bytes: string = string.hex()
         self.__r2.cmd(f'wx {string} @{address}')
 
     def __get_value_from_address(self, address):
@@ -79,20 +82,31 @@ class Emulator:
         if self.__api.contains_function(function_name):
             arguments = self.__api.get_function_arguments(function_name)
             arguments = self.__fill_function_arguments(arguments)
-            for arg in arguments: print(f'\t{arg.name} = {arg.value}')
+            print('\targuments:')
+            for arg in arguments: print(f'\t\t{arg.name} = {arg.value} ({arg.typed})')
             results = self.__api.emulate_function(function_name, arguments)
             self.__apply_function_results(results)
+        else:
+            print(f'\tfunction {function_name} not defined')
 
-    def __apply_function_results(self, result):
-        value = result.value
-        typed = result.typed
-        if typed == FunctionParam.BYTES:
-            nbytes = len(value)/2
-            address = self.__memory_stack.malloc(nbytes)
-            self.__write_bytes(value, address)
-            value = address
-        self.__set_register(result.name, value)
-        print(f'\tresult: {value}')
+    def __apply_function_results(self, results):
+        print('\tresults:')
+        for result in results:
+            target, typed = result.target, result.typed
+            if result.to_reference:
+                if typed == FunctionResult.NUMBER:
+                    result.value = self.__memory_stack.malloc(result.value)
+                elif typed == FunctionResult.BYTES:
+                    size = len(result.value)
+                    address = self.__memory_stack.malloc(size)
+                    self.__write_bytes(result.value, address)
+                    result.value = address
+                typed = 'address'            
+            print(f'\t\t{target} = {result.value} ({typed})')
+            if is_address(target):
+                self.__write_bytes(result.value, target)
+            else:
+                self.__set_register(target, result.value)
 
     def __execute_return(self):
         self.__r2.cmd('ae esp,[4],eip,=,4,esp,+=')
@@ -102,18 +116,18 @@ class Emulator:
         eip = self.__get_register('eip')
         self.__r2.cmd('aepc '+eip)
 
-    def __fill_function_arguments(self, params):
+    def __fill_function_arguments(self, arguments):
         esp = int(self.__get_register('esp'), 16)
-        for i in range(len(params)):
+        for i in range(len(arguments)):
             address = esp+4 + 4*i
             value = self.__get_value_from_address(address)
-            typed = params[i].typed
-            if typed == FunctionParam.STRING:
+            typed = arguments[i].typed
+            if typed == FunctionArgument.STRING:
                 value = self.__get_string_from_address(value)
-            if typed == FunctionParam.NUMBER:
+            elif typed == FunctionArgument.NUMBER:
                 value = int(value, 16)
-            params[i].value = value
-        return params
+            arguments[i].value = value
+        return arguments
 
     def run(self):
         while self.__get_current_address() != self.__last_instruction.address:
