@@ -2,9 +2,10 @@
 
 import sys, r2pipe
 
-from api import Api
-from api_classes import FunctionArgument, FunctionResult
-from classes import Instruction, RelocationTable, MemoryStack
+import classes
+from api.container import ApiContainer
+from api.parameters import *
+from api import winbase, c
 from utilities import *
 
 class Emulator:
@@ -34,15 +35,15 @@ class Emulator:
 
     def __set_relocations_table(self):
         relocations = self.__r2.cmdj('irj')
-        self.__rel_table = RelocationTable(relocations)
+        self.__rel_table = classes.RelocationTable(relocations)
 
     def __get_instruction(self):
         data = self.__r2.cmdj('pdj 1 @eip')[0]
-        self.__instruction = Instruction(data)
+        self.__instruction = classes.Instruction(data)
 
     def __get_last_instruction(self):
         data = self.__r2.cmdj('pdfj')['ops'][-1]
-        self.__last_instruction = Instruction(data)
+        self.__last_instruction = classes.Instruction(data)
 
     def __get_current_address(self):
         return self.__instruction.address
@@ -137,7 +138,9 @@ class Emulator:
 
 if __name__ == "__main__":
     executable = sys.argv[1]
-    api = Api()
-    memory = MemoryStack(0x100000, 0xf0000)
-    emulator = Emulator(executable, memory, api)
+    api_container = ApiContainer()
+    api_container.load_api(winbase.WinBase())
+    api_container.load_api(c.CApi())
+    memory = classes.MemoryStack(0x100000, 0xf0000)
+    emulator = Emulator(executable, memory, api_container)
     emulator.run()
