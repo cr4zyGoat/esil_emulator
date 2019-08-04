@@ -2,6 +2,7 @@ class FunctionArgument:
 	STRING = 'string'
 	NUMBER = 'number'
 	ADDRESS = 'address'
+	POINTED_VALUE = 'pointed_value'
 
 	def __init__(self, name, typed, value=None):
 		self.name = name

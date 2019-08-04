@@ -98,7 +98,7 @@ class Emulator:
                     address = self.__memory_stack.malloc(size)
                     self.__write_bytes(result.value, address)
                     result.value = address
-                typed = 'address'            
+                typed = 'address'
             print(f'\t\t{target} = {result.value} ({typed})')
             if is_address(target):
                 self.__write_bytes(result.value, target)
@@ -121,6 +121,8 @@ class Emulator:
             typed = arguments[i].typed
             if typed == FunctionArgument.STRING:
                 value = self.__get_string_from_address(value)
+            elif typed == FunctionArgument.POINTED_VALUE:
+                value = self.__get_value_from_address(value)
             elif typed == FunctionArgument.NUMBER:
                 value = int(value, 16)
             arguments[i].value = value

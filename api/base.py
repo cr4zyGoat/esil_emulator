@@ -1,4 +1,5 @@
 from api.interface import ApiInterface
+from api.parameters import FunctionResult
 
 class ApiBase(ApiInterface):
     def __init__(self):
@@ -8,7 +9,9 @@ class ApiBase(ApiInterface):
         self.__functions = {**self.__functions, **functions}
 
     def _wrap_results(self, results):
-        return results if type(results) == list else [results]
+        if type(results) == FunctionResult: return [results]
+        if not results: return list()
+        return results
 
     def contains_function(self, function_name):
         return function_name in self.__functions
