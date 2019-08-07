@@ -2,7 +2,7 @@ import r2pipe
 
 import emulator_objects as emo
 from api.parameters import *
-from utilities import *
+import utilities as util
 
 class Emulator:
     def __init__(self, file, memory, api):
@@ -100,7 +100,7 @@ class Emulator:
                     result.value = address
                 typed = 'address'
             print(f'\t\t{target} = {result.value} ({typed})')
-            if is_address(target):
+            if util.is_address(target):
                 self.__write_bytes(result.value, target)
             else:
                 self.__set_register(target, result.value)

@@ -13,6 +13,22 @@ class ApiBase(ApiInterface):
         if not results: return list()
         return results
 
+    def _true_result(self, target=None, to_reference=None):
+        kwargs = {}
+        if target: kwargs['target'] = target
+        if to_reference: kwargs['to_reference'] = to_reference
+        return FunctionResult(1, FunctionResult.NUMBER, **kwargs)
+
+    def _null_result(self, target=None, to_reference=None):
+        kwargs = {}
+        if target: kwargs['target'] = target
+        if to_reference: kwargs['to_reference'] = to_reference
+        return FunctionResult(0, FunctionResult.NUMBER, **kwargs)
+    
+    def _new_address_result(self, target=None):
+        kwargs = {'target': target} if target else {}
+        return FunctionResult(1, FunctionResult.NUMBER, to_reference=True, **kwargs)
+
     def contains_function(self, function_name):
         return function_name in self.__functions
 
