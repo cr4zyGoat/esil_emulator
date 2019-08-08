@@ -128,9 +128,33 @@ class WinBase(ApiBase):
             'EraseTape': [self.__erase_tape, self.__erase_tape_arguments],
             'EscapeCommFunction': [self.__escape_comm_function, self.__escape_comm_function_arguments],
             'ExecuteUmsThread': [self.__execute_ums_thread, self.__execute_ums_thread_arguments],
-
+            'FatalExit': [self.__fatal_exit, self.__fatal_exit_arguments],
+            'FileEncryptionStatusA': [self.__file_encryption_status_A, self.__file_encryption_status_A_arguments],
+            'FileEncryptionStatusW': [self.__file_encryption_status_A, self.__file_encryption_status_A_arguments],
+            'FileTimeToDosDateTime': [self.__file_time_to_dos_date_time, self.__file_time_to_dos_date_time_arguments],
+            'FindActCtxSectionGuid': [self.__find_act_ctx_section_guid, self.__find_act_ctx_section_guid_arguments],
+            'FindActCtxSectionStringA': [self.__find_act_ctx_section_string_A, self.__find_act_ctx_section_string_A_arguments],
+            'FindActCtxSectionStringW': [self.__find_act_ctx_section_string_A, self.__find_act_ctx_section_string_A_arguments],
             'FindAtomA': [self.__find_atom_A, self.__find_atom_A_arguments],
-            'GetAtomNameA': [self.__get_atom_name_A, self.__get_atom_name_A_arguments]
+            'FindAtomW': [self.__find_atom_A, self.__find_atom_A_arguments],
+            'FindFirstFileNameTransactedW': [self.__find_first_file_name_transacted_W, self.__find_first_file_name_transacted_W_arguments],
+            'FindFirstFileTransactedA': [self.__find_first_file_transacted_A, self.__find_first_file_transacted_A_arguments],
+            'FindFirstFileTransactedW': [self.__find_first_file_transacted_A, self.__find_first_file_transacted_A_arguments],
+            'FindFirstStreamTransactedW': [self.__find_first_stream_transacted_W, self.__find_first_stream_transacted_W_arguments],
+            'FindFirstVolumeA': [self.__find_first_volume_A, self.__find_first_volume_A_arguments],
+            'FindFirstVolumeMountPointA': [self.__find_first_volume_mount_pointA, self.__find_first_volume_mount_pointA_arguments],
+            'FindFirstVolumeMountPointW': [self.__find_first_volume_mount_pointA, self.__find_first_volume_mount_pointA_arguments],
+            'FindNextVolumeA': [self.__find_next_volume_A, self.__find_next_volume_A_arguments],
+            'FindNextVolumeMountPointA': [self.__find_next_volume_mount_point_A, self.__find_next_volume_mount_point_A_arguments],
+            'FindNextVolumeMountPointW': [self.__find_next_volume_mount_point_A, self.__find_next_volume_mount_point_A_arguments],
+            'FindResourceA': [self.__find_resource_A, self.__find_resource_A_arguments],
+            'FindResourceExA': [self.__find_resource_ex_A, self.__find_resource_ex_A_arguments],
+            'FindVolumeMountPointClose': [self.__find_volume_mount_point_close, self.__find_volume_mount_point_close_arguments],
+            'FormatMessage': [self.__format_message, self.__format_message_arguments],
+            'FormatMessageA': [self.__format_message_A, self.__format_message_A_arguments],
+            'FormatMessageW': [self.__format_message_A, self.__format_message_A_arguments],
+
+            'GetAtomNameA': [self.__get_atom_name_A, self.__get_atom_name_A_arguments],
         })
 
     __access_check_and_audit_alarm_A_arguments = [
@@ -1090,6 +1114,56 @@ class WinBase(ApiBase):
     def __execute_ums_thread(self, umsThread):
         self._wrap_results(None)
 
+    __fatal_exit_arguments = [
+        FunctionArgument('exitCode', FunctionArgument.NUMBER)
+    ]
+
+    def __fatal_exit(self, exitCode):
+        return self._wrap_results(None)
+
+    __file_encryption_status_A_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('lpStatus', FunctionArgument.NUMBER)
+    ]
+
+    def __file_encryption_status_A(self, lpFileName, lpStatus):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(0, FunctionResult.NUMBER, target=lpFileName)
+        ])
+
+    __file_time_to_dos_date_time_arguments = [
+        FunctionArgument('lpFileTime', FunctionArgument.ADDRESS),
+        FunctionArgument('lpFatDate', FunctionArgument.NUMBER),
+        FunctionArgument('lpFatTime', FunctionArgument.NUMBER)
+    ]
+
+    def __file_time_to_dos_date_time(self, lpFileTime, lpFatDate, lpFatTime):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __find_act_ctx_section_guid_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('lpExtensionGuid', FunctionArgument.ADDRESS),
+        FunctionArgument('ulSectionId', FunctionArgument.NUMBER),
+        FunctionArgument('lpGuidToFind', FunctionArgument.ADDRESS),
+        FunctionArgument('returnedData', FunctionArgument.ADDRESS)
+    ]
+
+    def __find_act_ctx_section_guid(self, dwFlags, lpExtensionGuid, ulSectionId, lpGuidToFind, returnedData):
+        return self._wrap_results(self._true_result())
+
+    __find_act_ctx_section_string_A_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('lpExtensionGuid', FunctionArgument.ADDRESS),
+        FunctionArgument('ulSectionId', FunctionArgument.NUMBER),
+        FunctionArgument('lpStringToFind', FunctionArgument.STRING),
+        FunctionArgument('returnedData', FunctionArgument.ADDRESS)
+    ]
+
+    def __find_act_ctx_section_string_A(self, dwFlags, lpExtensionGuid, ulSectionId, lpStringToFind, returnedData):
+        return self._wrap_results(self._true_result())
+
     __find_atom_A_arguments = [
         FunctionArgument('lpString', FunctionArgument.STRING)
     ]
@@ -1098,6 +1172,154 @@ class WinBase(ApiBase):
         atom = self.__atoms_table.find_atom(lpString)
         result = FunctionResult(atom, FunctionResult.NUMBER)
         return self._wrap_results(result)
+
+    __find_first_file_name_transacted_W_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('stringLength', FunctionArgument.NUMBER),
+        FunctionArgument('linkName', FunctionArgument.ADDRESS),
+        FunctionArgument('hTransaction', FunctionArgument.ADDRESS)
+    ]
+
+    def __find_first_file_name_transacted_W(self, lpFileName, dwFlags, stringLength, linkName, hTransaction):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(lpFileName.encode(), FunctionResult.BYTES, target=linkName)
+        ])
+
+    __find_first_file_transacted_A_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('fInfoLevelId', FunctionArgument.NUMBER),
+        FunctionArgument('lpFindFileData', FunctionArgument.ADDRESS),
+        FunctionArgument('fSearchOp', FunctionArgument.NUMBER),
+        FunctionArgument('lpSearchFilter', FunctionArgument.ADDRESS),
+        FunctionArgument('dwAdditionalFlags', FunctionArgument.NUMBER),
+        FunctionArgument('hTransaction', FunctionArgument.ADDRESS)
+    ]
+
+    def __find_first_file_transacted_A(self, lpFileName, fInfoLevelId, lpFindFileData, fSearchOp, lpSearchFilter, dwAdditionalFlags, hTransaction):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(lpFileName.encode(), FunctionResult.BYTES, target=lpFindFileData)
+        ])
+
+    __find_first_stream_transacted_W_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('infoLevel', FunctionArgument.NUMBER),
+        FunctionArgument('lpFindStreamData', FunctionArgument.ADDRESS),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('hTransaction', FunctionArgument.ADDRESS)
+    ]
+
+    def __find_first_stream_transacted_W(self, lpFileName, infoLevel, lpFindStreamData, dwFlags, hTransaction):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(lpFileName.encode(), FunctionResult.BYTES, target=lpFindStreamData)
+        ])
+
+    __find_first_volume_A_arguments = [
+        FunctionArgument('lpszVolumeName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchBufferLength', FunctionArgument.NUMBER)
+    ]
+
+    def __find_first_volume_A(self, lpszVolumeName, cchBufferLength):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(b'\x00', FunctionResult.BYTES, target=lpszVolumeName)
+        ])
+
+    __find_first_volume_mount_pointA_arguments = [
+        FunctionArgument('lpszRootPathName', FunctionArgument.STRING),
+        FunctionArgument('lpszVolumeMountPoint', FunctionArgument.ADDRESS),
+        FunctionArgument('cchBufferLength', FunctionArgument.NUMBER)
+    ]
+
+    def __find_first_volume_mount_pointA(self, lpszRootPathName, lpszVolumeMountPoint, cchBufferLength):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(b'\x00', FunctionResult.BYTES, target=lpszVolumeMountPoint)
+        ])
+
+    __find_next_volume_A_arguments = [
+        FunctionArgument('hFindVolume', FunctionArgument.NUMBER),
+        FunctionArgument('lpszVolumeName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchBufferLength', FunctionArgument.NUMBER)
+    ]
+
+    def __find_next_volume_A(self, hFindVolume, lpszVolumeName, cchBufferLength):
+        result = FunctionResult(0, FunctionResult.NUMBER) # Fails to emulate that there's no more files
+        return self._wrap_results(result)
+
+    __find_next_volume_mount_point_A_arguments = [
+        FunctionArgument('hFindVolumeMountPoint', FunctionArgument.NUMBER),
+        FunctionArgument('lpszVolumeMountPoint', FunctionArgument.ADDRESS),
+        FunctionArgument('cchBufferLength', FunctionArgument.NUMBER)
+    ]
+
+    def __find_next_volume_mount_point_A(self, hFindVolumeMountPoint, lpszVolumeMountPoint, cchBufferLength):
+        result = FunctionResult(0, FunctionResult.NUMBER) # Fails to emulate that there's no more mounted folders
+        return self._wrap_results(result)
+
+    __find_resource_A_arguments = [
+        FunctionArgument('hModule', FunctionArgument.ADDRESS),
+        FunctionArgument('lpName', FunctionArgument.STRING),
+        FunctionArgument('lpType', FunctionArgument.NUMBER)
+    ]
+
+    def __find_resource_A(self, hModule, lpName, lpType):
+        return self._wrap_results(self._new_address_result())
+
+    __find_resource_ex_A_arguments = [
+        FunctionArgument('hModule', FunctionArgument.ADDRESS),
+        FunctionArgument('lpType', FunctionArgument.NUMBER),
+        FunctionArgument('lpName', FunctionArgument.STRING),
+        FunctionArgument('wLanguage', FunctionArgument.NUMBER)
+    ]
+
+    def __find_resource_ex_A(self, hModule, lpType, lpName, wLanguage):
+        return self._wrap_results(self._new_address_result())
+
+    __find_volume_mount_point_close_arguments = [
+        FunctionArgument('hFindVolumeMountPoint', FunctionArgument.NUMBER)
+    ]
+
+    def __find_volume_mount_point_close(self, hFindVolumeMountPoint):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __format_message_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('lpSource', FunctionArgument.ADDRESS),
+        FunctionArgument('dwMessageId', FunctionArgument.NUMBER),
+        FunctionArgument('dwLanguageId', FunctionArgument.NUMBER),
+        FunctionArgument('lpBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER),
+        FunctionArgument('arguments', FunctionArgument.ADDRESS)
+    ]
+
+    def __format_message(self, dwFlags, lpSource, dwMessageId, dwLanguageId, lpBuffer, nSize, arguments):
+        data = 'Some formated string from FormatMessage function'.encode()[:nSize-1] # Fake message
+        self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data + b'\x00', FunctionResult.BYTES, target=lpBuffer)
+        ])
+
+    __format_message_A_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('lpSource', FunctionArgument.ADDRESS),
+        FunctionArgument('dwMessageId', FunctionArgument.NUMBER),
+        FunctionArgument('dwLanguageId', FunctionArgument.NUMBER),
+        FunctionArgument('lpBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER),
+        FunctionArgument('arguments', FunctionArgument.ADDRESS)
+    ]
+
+    def __format_message_A(self, dwFlags, lpSource, dwMessageId, dwLanguageId, lpBuffer, nSize, arguments):
+        data = 'Some formated string from FormatMessageA function'.encode()[:nSize-1] # Fake message
+        self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data + b'\x00', FunctionResult.BYTES, target=lpBuffer)
+        ])
 
     __get_atom_name_A_arguments = [
         FunctionArgument('nAtom', FunctionArgument.NUMBER),
