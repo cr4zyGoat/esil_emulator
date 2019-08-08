@@ -27,3 +27,8 @@ class AtomsTable:
 		else:
 			self.__table[atom].count += 1
 		return atom
+
+	def remove_atom(self, atom):
+		self.__table[atom].count -= 1
+		if self.__table[atom].count <= 0:
+			del self.__table[atom]

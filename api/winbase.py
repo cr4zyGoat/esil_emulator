@@ -92,6 +92,42 @@ class WinBase(ApiBase):
             'CreateTapePartition': [self.__create_tape_partition, self.__create_tape_partition_arguments],
             'CreateUmsCompletionList': [self.__create_ums_completion_list, self.__create_ums_completion_list_arguments],
             'CreateUmsThreadContext': [self.__create_ums_thread_context, self.__create_ums_thread_context_arguments],
+            'DeactivateActCtx': [self.__deactivate_act_ctx, self.__deactivate_act_ctx_arguments],
+            'DebugBreakProcess': [self.__debug_break_process, self.__debug_break_process_arguments],
+            "DebugSetProcessKillOnExit": [self.__debug_set_process_kill_on_exit, self.__debug_set_process_kill_on_exit_arguments],
+            'DecryptFileA': [self.__decrypt_file_A, self.__decrypt_file_A_arguments],
+            'DecryptFileW': [self.__decrypt_file_A, self.__decrypt_file_A_arguments],
+            'DefineDosDeviceA': [self.__define_dos_device_A, self.__define_dos_device_A_arguments],
+            'DeleteAtom': [self.__delete_atom, self.__delete_atom_arguments],
+            'DeleteFiber': [self.__delete_fiber, self.__delete_fiber_arguments],
+            'DeleteFile': [self.__delete_file, self.__delete_file_arguments],
+            'DeleteFileTransactedA': [self.__delete_file_transacted_A, self.__delete_file_transacted_A_arguments],
+            'DeleteFileTransactedW': [self.__delete_file_transacted_A, self.__delete_file_transacted_A_arguments],
+            'DeleteTimerQueue': [self.__delete_timer_queue, self.__delete_timer_queue_arguments],
+            'DeleteUmsCompletionList': [self.__delete_ums_completion_list, self.__delete_ums_completion_list_arguments],
+            'DeleteUmsThreadContext': [self.__delete_ums_thread_context, self.__delete_ums_thread_context_arguments],
+            'DeleteVolumeMountPointA': [self.__delete_volume_mount_point_A, self.__delete_volume_mount_point_A_arguments],
+            'DequeueUmsCompletionListItems': [self.__dequeue_ums_completion_list_items, self.__dequeue_ums_completion_list_items_arguments],
+            'DeregisterEventSource': [self.__deregister_event_source, self.__deregister_event_source_arguments],
+            'DestroyThreadpoolEnvironment': [self.__destroy_threadpool_environment, self.__destroy_threadpool_environment_arguments],
+            'DisableThreadProfiling': [self.__disable_thread_profiling, self.__disable_thread_profiling_arguments],
+            'DnsHostnameToComputerNameA': [self.__dns_hostname_to_computer_name_A, self.__dns_hostname_to_computer_name_A_arguments],
+            'DnsHostnameToComputerNameW': [self.__dns_hostname_to_computer_name_A, self.__dns_hostname_to_computer_name_A_arguments],
+            'DosDateTimeToFileTime': [self.__dos_date_time_to_file_time, self.__dos_date_time_to_file_time_arguments],
+            'EnableThreadProfiling': [self.__enable_thread_profiling, self.__enable_thread_profiling_arguments],
+            'EncryptFileA': [self.__encrypt_file_A, self.__encrypt_file_A_arguments],
+            'EncryptFileW': [self.__encrypt_file_A, self.__encrypt_file_A_arguments],
+            'EndUpdateResourceA': [self.__end_update_resource_A, self.__end_update_resource_A_arguments],
+            'EndUpdateResourceW': [self.__end_update_resource_A, self.__end_update_resource_A_arguments],
+            'EnterUmsSchedulingMode': [self.__enter_ums_scheduling_mode, self.__enter_ums_scheduling_mode_arguments],
+            'EnumResourceLanguagesA': [self.__enum_resource_languages_A, self.__enum_resource_languages_A_arguments],
+            'EnumResourceLanguagesW': [self.__enum_resource_languages_A, self.__enum_resource_languages_A_arguments],
+            'EnumResourceNamesA': [self.__enum_resource_names_A, self.__enum_resource_names_A_arguments],
+            'EnumResourceTypesA': [self.__enum_resource_types_A, self.__enum_resource_types_A_arguments],
+            'EnumResourceTypesW': [self.__enum_resource_types_A, self.__enum_resource_types_A_arguments],
+            'EraseTape': [self.__erase_tape, self.__erase_tape_arguments],
+            'EscapeCommFunction': [self.__escape_comm_function, self.__escape_comm_function_arguments],
+            'ExecuteUmsThread': [self.__execute_ums_thread, self.__execute_ums_thread_arguments],
 
             'FindAtomA': [self.__find_atom_A, self.__find_atom_A_arguments],
             'GetAtomNameA': [self.__get_atom_name_A, self.__get_atom_name_A_arguments]
@@ -797,6 +833,262 @@ class WinBase(ApiBase):
             FunctionResult(1, FunctionResult.NUMBER),
             self._new_address_result(target=lpUmsThread)
         ])
+
+    __deactivate_act_ctx_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('ulCookie', FunctionArgument.ADDRESS)
+    ]
+
+    def __deactivate_act_ctx(self, dwFlags, ulCookie):
+        return self._wrap_results(self._true_result())
+
+    __debug_break_process_arguments = [
+        FunctionArgument('process', FunctionArgument.ADDRESS)
+    ]
+
+    def __debug_break_process(self, process):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __debug_set_process_kill_on_exit_arguments = [
+        FunctionArgument('killOnExit', FunctionArgument.NUMBER)
+    ]
+
+    def __debug_set_process_kill_on_exit(self, killOnExit):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __decrypt_file_A_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('dwReserved', FunctionArgument.NUMBER)
+    ]
+
+    def __decrypt_file_A(self, lpFileName, dwReserved):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __define_dos_device_A_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('lpDeviceName', FunctionArgument.STRING),
+        FunctionArgument('lpTargetPath', FunctionArgument.STRING)
+    ]
+
+    def __define_dos_device_A(self, dwFlags, lpDeviceName, lpTargetPath):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __delete_atom_arguments = [
+        FunctionArgument('nAtom', FunctionArgument.NUMBER)
+    ]
+
+    def __delete_atom(self, nAtom):
+        self.__atoms_table.remove_atom(nAtom)
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __delete_fiber_arguments = [
+        FunctionArgument('lpFiber', FunctionArgument.ADDRESS)
+    ]
+
+    def __delete_fiber(self, lpFiber):
+        return self._wrap_results(None)
+
+    __delete_file_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __delete_file(self, lpFileName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __delete_file_transacted_A_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('hTransaction', FunctionArgument.ADDRESS)
+    ]
+
+    def __delete_file_transacted_A(self, lpFileName, hTransaction):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __delete_timer_queue_arguments = [
+        FunctionArgument('timerQueue', FunctionArgument.ADDRESS)
+    ]
+
+    def __delete_timer_queue(self, timerQueue):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __delete_ums_completion_list_arguments = [
+        FunctionArgument('umsCompletionList', FunctionArgument.ADDRESS)
+    ]
+
+    def __delete_ums_completion_list(self, umsCompletionList):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __delete_ums_thread_context_arguments = [
+        FunctionArgument('umsThread', FunctionArgument.ADDRESS)
+    ]
+
+    def __delete_ums_thread_context(self, umsThread):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __delete_volume_mount_point_A_arguments = [
+        FunctionArgument('lpszVolumeMountPoint', FunctionArgument.STRING)
+    ]
+
+    def __delete_volume_mount_point_A(self, lpszVolumeMountPoint):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __dequeue_ums_completion_list_items_arguments = [
+        FunctionArgument('umsCompletionList', FunctionArgument.ADDRESS),
+        FunctionArgument('waitTimeOut', FunctionArgument.NUMBER),
+        FunctionArgument('umsThreadList', FunctionArgument.ADDRESS)
+    ]
+
+    def __dequeue_ums_completion_list_items(self, umsCompletionList, waitTimeOut, umsThreadList):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __deregister_event_source_arguments = [
+        FunctionArgument('hEventLog', FunctionArgument.ADDRESS)
+    ]
+
+    def __deregister_event_source(self, hEventLog):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __destroy_threadpool_environment_arguments = [
+        FunctionArgument('pcbe', FunctionArgument.ADDRESS)
+    ]
+
+    def __destroy_threadpool_environment(self, pcbe):
+        return self._wrap_results(None)
+
+    __disable_thread_profiling_arguments = [
+        FunctionArgument('performanceDataHandle', FunctionArgument.ADDRESS)
+    ]
+
+    def __disable_thread_profiling(self, performanceDataHandle):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __dns_hostname_to_computer_name_A_arguments = [
+        FunctionArgument('hostname', FunctionArgument.STRING),
+        FunctionArgument('computerName', FunctionArgument.STRING),
+        FunctionArgument('nSize', FunctionArgument.NUMBER)
+    ]
+
+    def __dns_hostname_to_computer_name_A(self, hostname, computerName, nSize):
+        data = hostname.encode()[:nSize]
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=computerName),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=nSize)
+        ])
+
+    __dos_date_time_to_file_time_arguments = [
+        FunctionArgument('wFatDate', FunctionArgument.NUMBER),
+        FunctionArgument('wFatTime', FunctionArgument.NUMBER),
+        FunctionArgument('lpFileTime', FunctionArgument.ADDRESS)
+    ]
+
+    def __dos_date_time_to_file_time(self, wFatDate, wFatTime, lpFileTime):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __enable_thread_profiling_arguments = [
+        FunctionArgument('threadHandle', FunctionArgument.ADDRESS),
+        FunctionArgument('flags', FunctionArgument.NUMBER),
+        FunctionArgument('hardwareCounters', FunctionArgument.NUMBER),
+        FunctionArgument('performanceDataHandle', FunctionArgument.ADDRESS)
+    ]
+
+    def __enable_thread_profiling(self, threadHandle, flags, hardwareCounters, performanceDataHandle):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __encrypt_file_A_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __encrypt_file_A(self, lpFileName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __end_update_resource_A_arguments = [
+        FunctionArgument('hUpdate', FunctionArgument.ADDRESS),
+        FunctionArgument('fDiscard', FunctionArgument.NUMBER)
+    ]
+
+    def __end_update_resource_A(self, hUpdate, fDiscard):
+        return self._wrap_results(self._true_result())
+
+    __enter_ums_scheduling_mode_arguments = [
+        FunctionArgument('schedulerStartupInfo', FunctionArgument.ADDRESS)
+    ]
+
+    def __enter_ums_scheduling_mode(self, schedulerStartupInfo):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __enum_resource_languages_A_arguments = [
+        FunctionArgument('hModule', FunctionArgument.ADDRESS),
+        FunctionArgument('lpType', FunctionArgument.NUMBER),
+        FunctionArgument('lpName', FunctionArgument.STRING),
+        FunctionArgument('lpEnumFunc', FunctionArgument.ADDRESS),
+        FunctionArgument('lParam', FunctionArgument.ADDRESS)
+    ]
+
+    def __enum_resource_languages_A(self, hModule, lpType, lpName, lpEnumFunc, lParam):
+        return self._wrap_results(self._true_result())
+
+    __enum_resource_names_A_arguments = [
+        FunctionArgument('hModule', FunctionArgument.ADDRESS),
+        FunctionArgument('lpType', FunctionArgument.NUMBER),
+        FunctionArgument('lpEnumFunc', FunctionArgument.ADDRESS),
+        FunctionArgument('lParam', FunctionArgument.ADDRESS)
+    ]
+
+    def __enum_resource_names_A(self, hModule, lpType, lpEnumFunc, lParam):
+        return self._wrap_results(self._true_result())
+
+    __enum_resource_types_A_arguments = [
+        FunctionArgument('hModule', FunctionArgument.ADDRESS),
+        FunctionArgument('lpEnumFunc', FunctionArgument.ADDRESS),
+        FunctionArgument('lParam', FunctionArgument.ADDRESS)
+    ]
+
+    def __enum_resource_types_A(self, hModule, lpEnumFunc, lParam):
+        return self._wrap_results(self._true_result())
+
+    __erase_tape_arguments = [
+        FunctionArgument('hDevice', FunctionArgument.ADDRESS),
+        FunctionArgument('dwEraseType', FunctionArgument.NUMBER),
+        FunctionArgument('bImmediate', FunctionArgument.NUMBER)
+    ]
+
+    def __erase_tape(self, hDevice, dwEraseType, bImmediate):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __escape_comm_function_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('dwFunc', FunctionArgument.NUMBER)
+    ]
+
+    def __escape_comm_function(self, hFile, dwFunc):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __execute_ums_thread_arguments = [
+        FunctionArgument('umsThread', FunctionArgument.ADDRESS)
+    ]
+
+    def __execute_ums_thread(self, umsThread):
+        self._wrap_results(None)
 
     __find_atom_A_arguments = [
         FunctionArgument('lpString', FunctionArgument.STRING)
