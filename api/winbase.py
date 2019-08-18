@@ -200,6 +200,20 @@ class WinBase(ApiBase):
             'GetLogicalDriveStringsA': [self.__get_logical_drive_strings_A, self.__get_logical_drive_strings_A_arguments],
             'GetLongPathNameTransactedA': [self.__get_long_path_name_transacted_A, self.__get_long_path_name_transacted_A_arguments],
             'GetLongPathNameTransactedW': [self.__get_long_path_name_transacted_A, self.__get_long_path_name_transacted_A_arguments],
+            'GetMailslotInfo': [self.__get_mailslot_info, self.__get_mailslot_info_arguments],
+            'GetMaximumProcessorCount': [self.__get_maximum_processor_count, self.__get_maximum_processor_count_arguments],
+            'GetMaximumProcessorGroupCount': [self.__get_maximum_processor_group_count, self.__get_maximum_processor_group_count_arguments],
+            'GetNamedPipeClientComputerNameA': [self.__get_named_pipe_client_computer_name_A, self.__get_named_pipe_client_computer_name_A_arguments],
+            'GetNamedPipeClientProcessId': [self.__get_named_pipe_client_process_id, self.__get_named_pipe_client_process_id_arguments],
+            'GetNamedPipeClientSessionId': [self.__get_named_pipe_client_session_id, self.__get_named_pipe_client_session_id_arguments],
+            'GetNamedPipeHandleStateA': [self.__get_named_pipe_handle_state_A, self.__get_named_pipe_handle_state_A_arguments],
+            'GetNamedPipeServerProcessId': [self.__get_named_pipe_server_process_id, self.__get_named_pipe_server_process_id_arguments],
+            'GetNamedPipeServerSessionId': [self.__get_named_pipe_server_session_id, self.__get_named_pipe_server_session_id_arguments],
+            'GetNextUmsListItem': [self.__get_next_ums_list_item, self.__get_next_ums_list_item_arguments],
+            'GetNumaAvailableMemoryNode': [self.__get_numa_available_memory_node, self.__get_numa_available_memory_node_arguments],
+            'GetNumaAvailableMemoryNodeEx': [self.__get_numa_available_memory_node_ex, self.__get_numa_available_memory_node_ex_arguments],
+            'GetNumaNodeNumberFromHandle': [self.__get_numa_node_number_from_handle, self.__get_numa_node_number_from_handle_arguments],
+            'GetNumaNodeProcessorMask': [self.__get_numa_node_processor_mask, self.__get_numa_node_processor_mask_arguments],
         })
 
     __access_check_and_audit_alarm_A_arguments = [
@@ -1657,7 +1671,7 @@ class WinBase(ApiBase):
         return self._wrap_results([
             FunctionResult(1, FunctionResult.NUMBER),
             FunctionResult(100, FunctionResult.NUMBER, target=lpPeriodMilliseconds), # fake 100 milliseconds per period
-            FunctionResult(1024, FunctionResult.NUMBER, target=lpBytesPerPeriod), # fake 1MG per period
+            FunctionResult(1024, FunctionResult.NUMBER, target=lpBytesPerPeriod), # fake 1KB per period
         ])
 
     __get_file_information_by_handle_ex_arguments = [
@@ -1767,3 +1781,145 @@ class WinBase(ApiBase):
             FunctionResult(len(data), FunctionResult.NUMBER),
             FunctionResult(data[:cchBuffer-1] + b'\x00', FunctionResult.BYTES, target=lpszLongPath)
         ])
+
+    __get_mailslot_info_arguments = [
+        FunctionArgument('hMailslot', FunctionArgument.ADDRESS),
+        FunctionArgument('lpMaxMessageSize', FunctionArgument.NUMBER),
+        FunctionArgument('lpNextSize', FunctionArgument.NUMBER),
+        FunctionArgument('lpMessageCount', FunctionArgument.NUMBER),
+        FunctionArgument('lpReadTimeout', FunctionArgument.NUMBER)
+    ]
+
+    def __get_mailslot_info(self, hMailslot, lpMaxMessageSize, lpNextSize, lpMessageCount, lpReadTimeout):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_maximum_processor_count_arguments = [
+        FunctionArgument('groupNumber', FunctionArgument.NUMBER)
+    ]
+
+    def __get_maximum_processor_count(self, groupNumber):
+        result = FunctionResult(2, FunctionArgument.NUMBER) # fake 2 maximum number of processors
+        return self._wrap_results(result)
+
+    __get_maximum_processor_group_count_arguments = []
+
+    def __get_maximum_processor_group_count(self):
+        result = FunctionResult(2, FunctionArgument.NUMBER) # fake 2 maximum number of processors groups
+        return self._wrap_results(result)
+
+    __get_named_pipe_client_computer_name_A_arguments = [
+        FunctionArgument('pipe', FunctionArgument.ADDRESS),
+        FunctionArgument('clientComputerName', FunctionArgument.STRING),
+        FunctionArgument('clientComputerNameLength', FunctionArgument.NUMBER)
+    ]
+
+    def __get_named_pipe_client_computer_name_A(self, pipe, clientComputerName, clientComputerNameLength):
+        data = clientComputerName.encode()[:clientComputerNameLength]
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=pipe)
+        ])
+
+    __get_named_pipe_client_process_id_arguments = [
+        FunctionArgument('pipe', FunctionArgument.ADDRESS),
+        FunctionArgument('clientProcessId', FunctionArgument.NUMBER)
+    ]
+
+    def __get_named_pipe_client_process_id(self, pipe, clientProcessId):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(clientProcessId, FunctionResult.NUMBER, target=pipe)
+        ])
+
+    __get_named_pipe_client_session_id_arguments = [
+        FunctionArgument('pipe', FunctionArgument.ADDRESS),
+        FunctionArgument('clientSessionId', FunctionArgument.NUMBER)
+    ]
+
+    def __get_named_pipe_client_session_id(self, pipe, clientSessionId):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(clientSessionId, FunctionResult.NUMBER, target=pipe)
+        ])
+
+    __get_named_pipe_handle_state_A_arguments = [
+        FunctionArgument('hNamedPipe', FunctionArgument.ADDRESS),
+        FunctionArgument('lpState', FunctionArgument.NUMBER),
+        FunctionArgument('lpCurInstances', FunctionArgument.ADDRESS),
+        FunctionArgument('lpMaxCollectionCount', FunctionArgument.ADDRESS),
+        FunctionArgument('lpCollectDataTimeout', FunctionArgument.ADDRESS),
+        FunctionArgument('lpUserName', FunctionArgument.ADDRESS),
+        FunctionArgument('nMaxUserNameSize', FunctionArgument.NUMBER)
+    ]
+
+    def __get_named_pipe_handle_state_A(self, hNamedPipe, lpState, lpCurInstances, lpMaxCollectionCount, lpCollectDataTimeout, lpUserName, nMaxUserNameSize):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_named_pipe_server_process_id_arguments = [
+        FunctionArgument('pipe', FunctionArgument.ADDRESS),
+        FunctionArgument('serverProcessId', FunctionArgument.NUMBER)
+    ]
+
+    def __get_named_pipe_server_process_id(self, pipe, serverProcessId):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(serverProcessId, FunctionResult.NUMBER, target=pipe)
+        ])
+
+    __get_named_pipe_server_session_id_arguments = [
+        FunctionArgument('pipe', FunctionArgument.ADDRESS),
+        FunctionArgument('serverSessionId', FunctionArgument.NUMBER)
+    ]
+
+    def __get_named_pipe_server_session_id(self, pipe, serverSessionId):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(serverSessionId, FunctionResult.NUMBER, target=pipe)
+        ])
+
+    __get_next_ums_list_item_arguments = [
+        FunctionArgument('umsContext', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_next_ums_list_item(self, umsContext):
+        return self._wrap_results(self._new_address_result())
+
+    __get_numa_available_memory_node_arguments = [
+        FunctionArgument('node', FunctionArgument.NUMBER),
+        FunctionArgument('availableBytes', FunctionArgument.NUMBER)
+    ]
+
+    def __get_numa_available_memory_node(self, node, availableBytes):
+        result = FunctionResult(1024**3, FunctionResult.NUMBER) # fake 1GB
+        return self._wrap_results(result)
+
+    __get_numa_available_memory_node_ex_arguments = [
+        FunctionArgument('node', FunctionArgument.NUMBER),
+        FunctionArgument('availableBytes', FunctionArgument.NUMBER)
+    ]
+
+    def __get_numa_available_memory_node_ex(self, node, availableBytes):
+        result = FunctionResult(1024**3, FunctionResult.NUMBER) # fake 1GB
+        return self._wrap_results(result)
+
+    __get_numa_node_number_from_handle_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('nodeNumber', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_numa_node_number_from_handle(self, hFile, nodeNumber):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(3, FunctionResult.NUMBER, target=nodeNumber) # fake number of the NUMA node
+        ])
+
+    __get_numa_node_processor_mask_arguments = [
+        FunctionArgument('node', FunctionArgument.NUMBER),
+        FunctionArgument('processorMask', FunctionArgument.NUMBER)
+    ]
+
+    def __get_numa_node_processor_mask(self, node, processorMask):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
