@@ -214,6 +214,72 @@ class WinBase(ApiBase):
             'GetNumaAvailableMemoryNodeEx': [self.__get_numa_available_memory_node_ex, self.__get_numa_available_memory_node_ex_arguments],
             'GetNumaNodeNumberFromHandle': [self.__get_numa_node_number_from_handle, self.__get_numa_node_number_from_handle_arguments],
             'GetNumaNodeProcessorMask': [self.__get_numa_node_processor_mask, self.__get_numa_node_processor_mask_arguments],
+            'GetNumaProcessorNode': [self.__get_numa_processor_node, self.__get_numa_processor_node_arguments],
+            'GetNumaProcessorNodeEx': [self.__get_numa_processor_node_ex, self.__get_numa_processor_node_ex_arguments],
+            'GetNumaProximityNode': [self.__get_numa_proximity_node, self.__get_numa_proximity_node_arguments],
+            'GetNumberOfEventLogRecords': [self.__get_number_of_event_log_records, self.__get_number_of_event_log_records_arguments],
+            'GetOldestEventLogRecord': [self.__get_oldest_event_log_record, self.__get_oldest_event_log_record_arguments],
+            'GetPrivateProfileInt': [self.__get_private_profile_int, self.__get_private_profile_int_arguments],
+            'GetPrivateProfileIntA': [self.__get_private_profile_int_A, self.__get_private_profile_int_A_arguments],
+            'GetPrivateProfileIntW': [self.__get_private_profile_int_A, self.__get_private_profile_int_A_arguments],
+            'GetPrivateProfileSection': [self.__get_private_profile_section, self.__get_private_profile_section_arguments],
+            'GetPrivateProfileSectionA': [self.__get_private_profile_section, self.__get_private_profile_section_arguments],
+            'GetPrivateProfileSectionNames': [self.__get_private_profile_section_names, self.__get_private_profile_section_names_arguments],
+            'GetPrivateProfileSectionNamesA': [self.__get_private_profile_section_names, self.__get_private_profile_section_names_arguments],
+            'GetPrivateProfileSectionNamesW': [self.__get_private_profile_section_names, self.__get_private_profile_section_names_arguments],
+            'GetPrivateProfileSectionW': [self.__get_private_profile_section, self.__get_private_profile_section_arguments],
+            'GetPrivateProfileString': [self.__get_private_profile_string, self.__get_private_profile_string_arguments],
+            'GetPrivateProfileStringA': [self.__get_private_profile_string, self.__get_private_profile_string_arguments],
+            'GetPrivateProfileStringW': [self.__get_private_profile_string, self.__get_private_profile_string_arguments],
+            'GetPrivateProfileStruct': [self.__get_private_profile_struct, self.__get_private_profile_struct_arguments],
+            'GetPrivateProfileStructA': [self.__get_private_profile_struct, self.__get_private_profile_struct_arguments],
+            'GetPrivateProfileStructW': [self.__get_private_profile_struct, self.__get_private_profile_struct_arguments],
+            'GetProcessAffinityMask': [self.__get_process_affinity_mask, self.__get_process_affinity_mask_arguments],
+            'GetProcessDEPPolicy': [self.__get_process_DEP_policy, self.__get_process_DEP_policy_arguments],
+            'GetProcessIoCounters': [self.__get_process_io_counters, self.__get_process_io_counters_arguments],
+            'GetProcessWorkingSetSize': [self.__get_process_working_set_size, self.__get_process_working_set_size_arguments],
+            'GetProfileIntA': [self.__get_profile_int_A, self.__get_profile_int_A_arguments],
+            'GetProfileIntW': [self.__get_profile_int_A, self.__get_profile_int_A_arguments],
+            'GetProfileSectionA': [self.__get_profile_section_A, self.__get_profile_section_A_arguments],
+            'GetProfileSectionW': [self.__get_profile_section_A, self.__get_profile_section_A_arguments],
+            'GetProfileStringA': [self.__get_profile_string_A, self.__get_profile_string_A_arguments],
+            'GetProfileStringW': [self.__get_profile_string_A, self.__get_profile_string_A_arguments],
+            'GetShortPathNameA': [self.__get_short_path_name_A, self.__get_short_path_name_A_arguments],
+            'GetSystemDEPPolicy': [self.__get_system_DEP_policy, self.__get_system_DEP_policy_arguments],
+            'GetSystemPowerStatus': [self.__get_system_power_status, self.__get_system_power_status_arguments],
+            'GetSystemRegistryQuota': [self.__get_system_registry_quota, self.__get_system_registry_quota_arguments],
+            'GetTapeParameters': [self.__get_tape_parameters, self.__get_tape_parameters_arguments],
+            'GetTapePosition': [self.__get_tape_position, self.__get_tape_position_arguments],
+            'GetTapeStatus': [self.__get_tape_status, self.__get_tape_status_arguments],
+            'GetTempFileName': [self.__get_temp_file_name, self.__get_temp_file_name_arguments],
+            'GetThreadSelectorEntry': [self.__get_thread_selector_entry, self.__get_thread_selector_entry_arguments],
+            'GetUmsCompletionListEvent': [self.__get_ums_completion_list_event, self.__get_ums_completion_list_event_arguments],
+            'GetUmsSystemThreadInformation': [self.__get_ums_system_thread_information, self.__get_ums_system_thread_information_arguments],
+            'GetUserNameA': [self.__get_user_name_A, self.__get_user_name_A_arguments],
+            'GetUserNameW': [self.__get_user_name_A, self.__get_user_name_A_arguments],
+            'GetVolumeNameForVolumeMountPointA': [self.__get_volume_name_for_volume_mount_point_A, self.__get_volume_name_for_volume_mount_point_A_arguments],
+            'GetVolumePathNameA': [self.__get_volume_path_name_A, self.__get_volume_path_name_A_arguments],
+            'GetVolumePathNamesForVolumeNameA': [self.__get_volume_path_names_for_volume_name_A, self.__get_volume_path_names_for_volume_name_A_arguments],
+            'GetXStateFeaturesMask': [self.__get_X_state_features_mask, self.__get_X_state_features_mask_arguments],
+            'GlobalAddAtomA': [self.__global_add_atom_A, self.__global_add_atom_A_arguments],
+            'GlobalAddAtomExA': [self.__global_add_atom_ex_A, self.__global_add_atom_ex_A_arguments],
+            'GlobalAddAtomExW': [self.__global_add_atom_ex_A, self.__global_add_atom_ex_A_arguments],
+            'GlobalAddAtomW': [self.__global_add_atom_A, self.__global_add_atom_A_arguments],
+            'GlobalAlloc': [self.__global_alloc, self.__global_alloc_arguments],
+            'GlobalDeleteAtom': [self.__global_delete_atom, self.__global_delete_atom_arguments],
+            'GlobalDiscard': [self.__global_discard, self.__global_discard_arguments],
+            'GlobalFindAtomA': [self.__global_find_atom_A, self.__global_find_atom_A_arguments],
+            'GlobalFindAtomW': [self.__global_find_atom_A, self.__global_find_atom_A_arguments],
+            'GlobalFlags': [self.__global_flags, self.__global_flags_arguments],
+            'GlobalFree': [self.__global_free, self.__global_free_arguments],
+            'GlobalGetAtomNameA': [self.__global_get_atom_name_A, self.__global_get_atom_name_A_arguments],
+            'GlobalGetAtomNameW': [self.__global_get_atom_name_A, self.__global_get_atom_name_A_arguments],
+            'GlobalHandle': [self.__global_handle, self.__global_handle_arguments],
+            'GlobalLock': [self.__global_lock, self.__global_lock_arguments],
+            'GlobalMemoryStatus': [self.__global_memory_status, self.__global_memory_status_arguments],
+            'GlobalReAlloc': [self.__global_re_alloc, self.__global_re_alloc_arguments],
+            'GlobalSize': [self.__global_size, self.__global_size_arguments],
+            'GlobalUnlock': [self.__global_unlock, self.__global_unlock_arguments],
         })
 
     __access_check_and_audit_alarm_A_arguments = [
@@ -1922,4 +1988,532 @@ class WinBase(ApiBase):
 
     def __get_numa_node_processor_mask(self, node, processorMask):
         result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_numa_processor_node_arguments = [
+        FunctionArgument('processor', FunctionArgument.NUMBER),
+        FunctionArgument('nodeNumber', FunctionArgument.NUMBER)
+    ]
+
+    def __get_numa_processor_node(self, processor, nodeNumber):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_numa_processor_node_ex_arguments = [
+        FunctionArgument('processor', FunctionArgument.ADDRESS),
+        FunctionArgument('nodeNumber', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_numa_processor_node_ex(self, processor, nodeNumber):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(1, FunctionResult.NUMBER, target=nodeNumber) # fake node number
+        ])
+
+    __get_numa_proximity_node_arguments = [
+        FunctionArgument('proximityId', FunctionArgument.NUMBER),
+        FunctionArgument('nodeNumber', FunctionArgument.NUMBER)
+    ]
+
+    def __get_numa_proximity_node(self, proximityId, nodeNumber):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_number_of_event_log_records_arguments = [
+        FunctionArgument('hEventLog', FunctionArgument.ADDRESS),
+        FunctionArgument('numberOfRecords', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_number_of_event_log_records(self, hEventLog, numberOfRecords):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(10, FunctionResult.NUMBER, target=numberOfRecords) # fake number of records
+        ])
+
+    __get_oldest_event_log_record_arguments = [
+        FunctionArgument('hEventLog', FunctionArgument.ADDRESS),
+        FunctionArgument('oldestRecord', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_oldest_event_log_record(self, hEventLog, oldestRecord):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(1, FunctionResult.NUMBER, target=oldestRecord) # fake record number
+        ])
+
+    __get_private_profile_int_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpKeyName', FunctionArgument.STRING),
+        FunctionArgument('nDefault', FunctionArgument.NUMBER),
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __get_private_profile_int(self, lpAppName, lpKeyName, nDefault, lpFileName):
+        result = FunctionResult(3, FunctionResult.NUMBER) # fake key id
+        return self._wrap_results(result)
+
+    __get_private_profile_int_A_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpKeyName', FunctionArgument.STRING),
+        FunctionArgument('nDefault', FunctionArgument.NUMBER),
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __get_private_profile_int_A(self, lpAppName, lpKeyName, nDefault, lpFileName):
+        result = FunctionResult(3, FunctionResult.NUMBER) # fake key id
+        return self._wrap_results(result)
+
+    __get_private_profile_section_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpReturnedString', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER),
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __get_private_profile_section(self, lpAppName, lpReturnedString, nSize, lpFileName):
+        data = b'profilekey1=profilevalue1\x00profilekey2=profilevalue2'[:nSize-2] # fake key-value data
+        return self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00\x00', FunctionResult.BYTES, target=lpReturnedString)
+        ])
+
+    __get_private_profile_section_names_arguments = [
+        FunctionArgument('lpszReturnBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER),
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __get_private_profile_section_names(self, lpszReturnBuffer, nSize, lpFileName):
+        data = b'profilename1\x00profilename2'[:nSize-2] # fake profile names
+        return self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00\x00', FunctionResult.BYTES, target=lpszReturnBuffer)
+        ])
+
+    __get_private_profile_string_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpKeyName', FunctionArgument.STRING),
+        FunctionArgument('lpDefault', FunctionArgument.STRING),
+        FunctionArgument('lpReturnedString', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER),
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __get_private_profile_string(self, lpAppName, lpKeyName, lpDefault, lpReturnedString, nSize, lpFileName):
+        data = b'Key_value_from_get_private_profile_string'[:nSize-1]
+        return self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00', FunctionResult.BYTES, target=lpReturnedString)
+        ])
+
+    __get_private_profile_struct_arguments = [
+        FunctionArgument('lpszSection', FunctionArgument.STRING),
+        FunctionArgument('lpszKey', FunctionArgument.STRING),
+        FunctionArgument('lpStruct', FunctionArgument.ADDRESS),
+        FunctionArgument('uSizeStruct', FunctionArgument.NUMBER),
+        FunctionArgument('szFile', FunctionArgument.STRING)
+    ]
+
+    def __get_private_profile_struct(self, lpszSection, lpszKey, lpStruct, uSizeStruct, szFile):
+        data = b'Some_data_from_file_section_and_keyname'[:uSizeStruct-1]
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00', FunctionResult.BYTES, target=lpStruct)
+        ])
+
+    __get_process_affinity_mask_arguments = [
+        FunctionArgument('hProcess', FunctionArgument.ADDRESS),
+        FunctionArgument('lpProcessAffinityMask', FunctionArgument.ADDRESS),
+        FunctionArgument('lpSystemAffinityMask', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_process_affinity_mask(self, hProcess, lpProcessAffinityMask, lpSystemAffinityMask):
+        affinity = int('0x11111111', 16) # fake max affinity
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(affinity, FunctionResult.NUMBER, target=lpProcessAffinityMask),
+            FunctionResult(affinity, FunctionResult.NUMBER, target=lpSystemAffinityMask)
+        ])
+
+    __get_process_DEP_policy_arguments = [
+        FunctionArgument('hProcess', FunctionArgument.ADDRESS),
+        FunctionArgument('lpFlags', FunctionArgument.ADDRESS),
+        FunctionArgument('lpPermanent', FunctionArgument.NUMBER)
+    ]
+
+    def __get_process_DEP_policy(self, hProcess, lpFlags, lpPermanent):
+        return self._wrap_results([
+            self._true_result(),
+            FunctionResult(0, FunctionResult.NUMBER, target=lpFlags) # fake DEP disabled
+        ])
+
+    __get_process_io_counters_arguments = [
+        FunctionArgument('hProcess', FunctionArgument.ADDRESS),
+        FunctionArgument('lpIoCounters', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_process_io_counters(self, hProcess, lpIoCounters):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_process_working_set_size_arguments = [
+        FunctionArgument('hProcess', FunctionArgument.ADDRESS),
+        FunctionArgument('lpMinimumWorkingSetSize', FunctionArgument.ADDRESS),
+        FunctionArgument('lpMaximumWorkingSetSize', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_process_working_set_size(self, hProcess, lpMinimumWorkingSetSize, lpMaximumWorkingSetSize):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(1024**2, FunctionResult.NUMBER, target=lpMinimumWorkingSetSize), # fake minimum working set size - 1MB
+            FunctionResult(1024**3, FunctionResult.NUMBER, target=lpMaximumWorkingSetSize), # fake maximum working set size - 1GB
+        ])
+
+    __get_profile_int_A_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpKeyName', FunctionArgument.STRING),
+        FunctionArgument('nDefault', FunctionArgument.NUMBER)
+    ]
+
+    def __get_profile_int_A(self, lpAppName, lpKeyName, nDefault):
+        result = FunctionResult(3, FunctionResult.NUMBER) # fake key id
+        return self._wrap_results(result)
+
+    __get_profile_section_A_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpReturnedString', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER)
+    ]
+
+    def __get_profile_section_A(self, lpAppName, lpReturnedString, nSize):
+        data = b'keyprofile1=keyvalue1\x00keyprofile2=keyvalue2'[:nSize - 2]
+        return self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00\x00', FunctionResult.BYTES, target=lpReturnedString)
+        ])
+
+    __get_profile_string_A_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpKeyName', FunctionArgument.STRING),
+        FunctionArgument('lpDefault', FunctionArgument.STRING),
+        FunctionArgument('lpReturnedString', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER)
+    ]
+    
+    def __get_profile_string_A(self, lpAppName, lpKeyName, lpDefault, lpReturnedString, nSize):
+        data = b'Key_value_from_get_profile_string'[:nSize-1]
+        return self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00', FunctionResult.BYTES, target=lpReturnedString)
+        ])
+
+    __get_short_path_name_A_arguments = [
+        FunctionArgument('lpszLongPath', FunctionArgument.STRING),
+        FunctionArgument('lpszShortPath', FunctionArgument.ADDRESS),
+        FunctionArgument('cchBuffer', FunctionArgument.NUMBER)
+    ]
+
+    def __get_short_path_name_A(self, lpszLongPath, lpszShortPath, cchBuffer):
+        data = lpszLongPath.encode()[:cchBuffer - 1]
+        return self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data + b'\x00', FunctionResult.BYTES, target=lpszShortPath)
+        ])
+
+    __get_system_DEP_policy_arguments = []
+
+    def __get_system_DEP_policy(self):
+        result = FunctionResult(0, FunctionResult.NUMBER) # fake DEP is always off
+        return self._wrap_results(result)
+
+    __get_system_power_status_arguments = [
+        FunctionArgument('lpSystemPowerStatus', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_system_power_status(self, lpSystemPowerStatus):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_system_registry_quota_arguments = [
+        FunctionArgument('pdwQuotaAllowed', FunctionArgument.ADDRESS),
+        FunctionArgument('pdwQuotaUsed', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_system_registry_quota(self, pdwQuotaAllowed, pdwQuotaUsed):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(1024**3, FunctionResult.NUMBER, target=pdwQuotaAllowed), # fake 1GB size of registry allowed
+            FunctionResult(200*(1024**2), FunctionResult.NUMBER, target=pdwQuotaUsed) # fake 200MB size of registry used
+        ])
+
+    __get_tape_parameters_arguments = [
+        FunctionArgument('hDevice', FunctionArgument.ADDRESS),
+        FunctionArgument('dwOperation', FunctionArgument.NUMBER),
+        FunctionArgument('lpdwSize', FunctionArgument.ADDRESS),
+        FunctionArgument('lpTapeInformation', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_tape_parameters(self, hDevice, dwOperation, lpdwSize, lpTapeInformation):
+        result = FunctionResult(0, FunctionResult.NUMBER) # NO_ERROR
+        return self._wrap_results(result)
+
+    __get_tape_position_arguments = [
+        FunctionArgument('hDevice', FunctionArgument.ADDRESS),
+        FunctionArgument('dwPositionType', FunctionArgument.NUMBER),
+        FunctionArgument('lpdwPartition', FunctionArgument.ADDRESS),
+        FunctionArgument('lpdwOffsetLow', FunctionArgument.ADDRESS),
+        FunctionArgument('lpdwOffsetHigh', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_tape_position(self, hDevice, dwPositionType, lpdwPartition, lpdwOffsetLow, lpdwOffsetHigh):
+        return self._wrap_results([
+            FunctionResult(0, FunctionResult.NUMBER),
+            FunctionResult(2, FunctionResult.NUMBER, target=lpdwPartition), # fake 2nd partition
+            FunctionResult(1024**3, FunctionResult.NUMBER, target=lpdwOffsetLow), # fake 1GB partition
+            self._null_result(target=lpdwOffsetHigh)
+        ])
+
+    __get_tape_status_arguments = [
+        FunctionArgument('hDevice', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_tape_status(self, hDevice):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_temp_file_name_arguments = [
+        FunctionArgument('lpPathName', FunctionArgument.STRING),
+        FunctionArgument('lpPrefixString', FunctionArgument.STRING),
+        FunctionArgument('uUnique', FunctionArgument.NUMBER),
+        FunctionArgument('lpTempFileName', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_temp_file_name(self, lpPathName, lpPrefixString, uUnique, lpTempFileName):
+        number = uUnique or 1337
+        data = f'{lpPrefixString[:3]}{lpPathName}{number}'.encode()
+        return self._wrap_results([
+            FunctionResult(number, FunctionResult.NUMBER),
+            FunctionResult(data + b'\x00', FunctionResult.BYTES, target=lpTempFileName)
+        ])
+
+    __get_thread_selector_entry_arguments = [
+        FunctionArgument('hThread', FunctionArgument.ADDRESS),
+        FunctionArgument('dwSelector', FunctionArgument.NUMBER),
+        FunctionArgument('lpSelectorEntry', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_thread_selector_entry(self, hThread, dwSelector, lpSelectorEntry):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __get_ums_completion_list_event_arguments = [
+        FunctionArgument('umsCompletionList', FunctionArgument.ADDRESS),
+        FunctionArgument('umsCompletionEvent', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_ums_completion_list_event(self, umsCompletionList, umsCompletionEvent):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            self._new_address_result(target=umsCompletionEvent)
+        ])
+
+    __get_ums_system_thread_information_arguments = [
+        FunctionArgument('threadHandle', FunctionArgument.ADDRESS),
+        FunctionArgument('systemThreadInfo', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_ums_system_thread_information(self, threadHandle, systemThreadInfo):
+        return self._wrap_results(self._true_result())
+
+    __get_user_name_A_arguments = [
+        FunctionArgument('lpBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('pcbBuffer', FunctionArgument.NUMBER)
+    ]
+
+    def __get_user_name_A(self, lpBuffer, pcbBuffer):
+        data = b'one_username'[:pcbBuffer-1]
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00', FunctionResult.BYTES, target=lpBuffer)
+        ])
+
+    __get_volume_name_for_volume_mount_point_A_arguments = [
+        FunctionArgument('lpszVolumeMountPoint', FunctionArgument.STRING),
+        FunctionArgument('lpszVolumeName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchBufferLength', FunctionArgument.NUMBER)
+    ]
+
+    def __get_volume_name_for_volume_mount_point_A(self, lpszVolumeMountPoint, lpszVolumeName, cchBufferLength):
+        data = b'\\Volume{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}'[:cchBufferLength-1] + b'\x00' # fake volume GUID
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=lpszVolumeName)
+        ])
+
+    __get_volume_path_name_A_arguments = [
+        FunctionArgument('lpszFileName', FunctionArgument.STRING),
+        FunctionArgument('lpszVolumePathName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchBufferLength', FunctionArgument.NUMBER)
+    ]
+
+    def __get_volume_path_name_A(self, lpszFileName, lpszVolumePathName, cchBufferLength):
+        data = b'C:\\'[:cchBufferLength-1] + b'\x00' # fake volume path
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=lpszVolumePathName)
+        ])
+
+    __get_volume_path_names_for_volume_name_A_arguments = [
+        FunctionArgument('lpszVolumeName', FunctionArgument.STRING),
+        FunctionArgument('lpszVolumePathNames', FunctionArgument.ADDRESS),
+        FunctionArgument('cchBufferLength', FunctionArgument.NUMBER),
+        FunctionArgument('lpcchReturnLength', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_volume_path_names_for_volume_name_A(self, lpszVolumeName, lpszVolumePathNames, cchBufferLength, lpcchReturnLength):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            self._new_address_result(target=lpszVolumePathNames)
+        ])
+
+    __get_X_state_features_mask_arguments = [
+        FunctionArgument('context', FunctionArgument.ADDRESS),
+        FunctionArgument('featureMask', FunctionArgument.ADDRESS)
+    ]
+
+    def __get_X_state_features_mask(self, context, featureMask):
+        return self._wrap_results([
+            self._true_result(),
+            self._new_address_result(target=featureMask)
+        ])
+
+    __global_add_atom_A_arguments = [
+        FunctionArgument('lpString', FunctionArgument.STRING)
+    ]
+
+    def __global_add_atom_A(self, lpString):
+        atom = self.__atoms_table.add_atom(lpString)
+        result = FunctionResult(atom, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __global_add_atom_ex_A_arguments = [
+        FunctionArgument('lpString', FunctionArgument.STRING),
+        FunctionArgument('flags', FunctionArgument.NUMBER)
+    ]
+
+    def __global_add_atom_ex_A(self, lpString, flags):
+        atom = self.__atoms_table.add_atom(lpString)
+        result = FunctionResult(atom, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __global_alloc_arguments = [
+        FunctionArgument('uFlags', FunctionArgument.NUMBER),
+        FunctionArgument('dwBytes', FunctionArgument.NUMBER)
+    ]
+
+    def __global_alloc(self, uFlags, dwBytes):
+        result = FunctionResult(dwBytes, FunctionResult.NUMBER, to_reference=True) if dwBytes > 0 else self._new_address_result()
+        return self._wrap_results(result)
+
+    __global_delete_atom_arguments = [
+        FunctionArgument('nAtom', FunctionArgument.NUMBER)
+    ]
+
+    def __global_delete_atom(self, nAtom):
+        self.__atoms_table.remove_atom(nAtom)
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __global_discard_arguments = [
+        FunctionArgument('h', FunctionArgument.ADDRESS)
+    ]
+
+    def __global_discard(self, h):
+        return self._wrap_results(None)
+
+    __global_find_atom_A_arguments = [
+        FunctionArgument('lpString', FunctionArgument.STRING)
+    ]
+
+    def __global_find_atom_A(self, lpString):
+        atom = self.__atoms_table.find_atom(lpString)
+        result = FunctionResult(atom, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __global_flags_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __global_flags(self, hMem):
+        result = FunctionResult(int('0x11111111', 16), FunctionResult.NUMBER) # fake allocation values and lock count
+        return self._wrap_results(result)
+
+    __global_free_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __global_free(self, hMem):
+        return self._wrap_results(self._null_result())
+
+    __global_get_atom_name_A_arguments = [
+        FunctionArgument('nAtom', FunctionArgument.NUMBER),
+        FunctionArgument('lpBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER)
+    ]
+
+    def __global_get_atom_name_A(self, nAtom, lpBuffer, nSize):
+        string = self.__atoms_table.find_string(nAtom)
+        string = string.encode()[:nSize].strip(b'\x00')
+        return self._wrap_results([
+            FunctionResult(len(string), FunctionResult.NUMBER),
+            FunctionResult(string, FunctionResult.BYTES, target=lpBuffer)
+        ])
+
+    __global_handle_arguments = [
+        FunctionArgument('pMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __global_handle(self, pMem):
+        result = FunctionResult(int(pMem, 16), FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __global_lock_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __global_lock(self, hMem):
+        result = FunctionResult(int(hMem, 16), FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __global_memory_status_arguments = [
+        FunctionArgument('lpBuffer', FunctionArgument.ADDRESS)
+    ]
+
+    def __global_memory_status(self, lpBuffer):
+        return self._wrap_results(None)
+
+    __global_re_alloc_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS),
+        FunctionArgument('dwBytes', FunctionArgument.NUMBER),
+        FunctionArgument('uFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __global_re_alloc(self, hMem, dwBytes, uFlags):
+        result = FunctionResult(dwBytes, FunctionResult.NUMBER, to_reference=True)
+        return self._wrap_results(result)
+
+    __global_size_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __global_size(self, hMem):
+        result = FunctionResult(10, FunctionResult.NUMBER) # fake 10 bytes of memory
+        return self._wrap_results(result)
+
+    __global_unlock_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __global_unlock(self, hMem):
+        result = FunctionResult(0, FunctionResult.NUMBER) # memory object unlocked
         return self._wrap_results(result)
