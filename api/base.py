@@ -19,6 +19,12 @@ class ApiBase(ApiInterface):
         if to_reference: kwargs['to_reference'] = to_reference
         return FunctionResult(1, FunctionResult.NUMBER, **kwargs)
 
+    def _false_result(self, target=None, to_reference=None):
+        kwargs = {}
+        if target: kwargs['target'] = target
+        if to_reference: kwargs['to_reference'] = to_reference
+        return FunctionResult(0, FunctionResult.NUMBER, **kwargs)
+
     def _null_result(self, target=None, to_reference=None):
         kwargs = {}
         if target: kwargs['target'] = target

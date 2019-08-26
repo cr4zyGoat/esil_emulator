@@ -280,6 +280,59 @@ class WinBase(ApiBase):
             'GlobalReAlloc': [self.__global_re_alloc, self.__global_re_alloc_arguments],
             'GlobalSize': [self.__global_size, self.__global_size_arguments],
             'GlobalUnlock': [self.__global_unlock, self.__global_unlock_arguments],
+            'HasOverlappedIoCompleted': [self.__has_overlapped_io_completed, self.__has_overlapped_io_completed_arguments],
+            'InitAtomTable': [self.__init_atom_table, self.__init_atom_table_arguments],
+            'InitializeContext': [self.__initialize_context, self.__initialize_context_arguments],
+            'InitializeThreadpoolEnvironment': [self.__initialize_threadpool_environment, self.__initialize_threadpool_environment_arguments],
+            'InterlockedExchangeSubtract': [self.__interlocked_exchange_subtract, self.__interlocked_exchange_subtract_arguments],
+            'IsBadCodePtr': [self.__is_bad_code_ptr, self.__is_bad_code_ptr_arguments],
+            'IsBadReadPtr': [self.__is_bad_read_ptr, self.__is_bad_read_ptr_arguments],
+            'IsBadStringPtrA': [self.__is_bad_string_ptr_A, self.__is_bad_string_ptr_A_arguments],
+            'IsBadStringPtrW': [self.__is_bad_string_ptr_A, self.__is_bad_string_ptr_A_arguments],
+            'IsBadWritePtr': [self.__is_bad_write_ptr, self.__is_bad_write_ptr_arguments],
+            'IsNativeVhdBoot': [self.__is_native_vhd_boot, self.__is_native_vhd_boot_arguments],
+            'IsSystemResumeAutomatic': [self.__is_system_resume_automatic, self.__is_system_resume_automatic_arguments],
+            'IsTextUnicode': [self.__is_text_unicode, self.__is_text_unicode_arguments],
+            'LoadModule': [self.__load_module, self.__load_module_arguments],
+            'LoadPackagedLibrary': [self.__load_packaged_library, self.__load_packaged_library_arguments],
+            'LocalAlloc': [self.__local_alloc, self.__local_alloc_arguments],
+            'LocalFlags': [self.__local_flags, self.__local_flags_arguments],
+            'LocalFree': [self.__local_free, self.__local_free_arguments],
+            'LocalHandle': [self.__local_handle, self.__local_handle_arguments],
+            'LocalLock': [self.__local_lock, self.__local_lock_arguments],
+            'LocalReAlloc': [self.__local_re_alloc, self.__local_re_alloc_arguments],
+            'LocalSize': [self.__local_size, self.__local_size_arguments],
+            'LocalUnlock': [self.__local_unlock, self.__local_unlock_arguments],
+            'LocateXStateFeature': [self.__locate_X_state_feature, self.__locate_X_state_feature_arguments],
+            'LogonUserA': [self.__logon_user_A, self.__logon_user_A_arguments],
+            'LogonUserExA': [self.__logon_user_ex_A, self.__logon_user_ex_A_arguments],
+            'LogonUserExW': [self.__logon_user_ex_A, self.__logon_user_ex_A_arguments],
+            'LogonUserW': [self.__logon_user_A, self.__logon_user_A_arguments],
+            'LookupAccountNameA': [self.__lookup_account_name_A, self.__lookup_account_name_A_arguments],
+            'LookupAccountNameW': [self.__lookup_account_name_A, self.__lookup_account_name_A_arguments],
+            'LookupAccountSidA': [self.__lookup_account_sid_A, self.__lookup_account_sid_A_arguments],
+            'LookupAccountSidLocalA': [self.__lookup_account_sid_local_A, self.__lookup_account_sid_local_A_arguments],
+            'LookupAccountSidLocalW': [self.__lookup_account_sid_local_A, self.__lookup_account_sid_local_A_arguments],
+            'LookupAccountSidW': [self.__lookup_account_sid_A, self.__lookup_account_sid_A_arguments],
+            'LookupPrivilegeDisplayNameA': [self.__lookup_privilege_display_name_A, self.__lookup_privilege_display_name_A_arguments],
+            'LookupPrivilegeDisplayNameW': [self.__lookup_privilege_display_name_A, self.__lookup_privilege_display_name_A_arguments],
+            'LookupPrivilegeNameA': [self.__lookup_privilege_name_A, self.__lookup_privilege_name_A_arguments],
+            'LookupPrivilegeNameW': [self.__lookup_privilege_name_A, self.__lookup_privilege_name_A_arguments],
+            'LookupPrivilegeValueA': [self.__lookup_privilege_value_A, self.__lookup_privilege_value_A_arguments],
+            'LookupPrivilegeValueW': [self.__lookup_privilege_value_A, self.__lookup_privilege_value_A_arguments],
+            'LpprogressRoutine': [self.__lpprogress_routine, self.__lpprogress_routine_arguments],
+            'lstrcatA': [self.__lstrcat_A, self.__lstrcat_A_arguments],
+            'lstrcatW': [self.__lstrcat_A, self.__lstrcat_A_arguments],
+            'lstrcmpA': [self.__lstrcmp_A, self.__lstrcmp_A_arguments],
+            'lstrcmpiA': [self.__lstrcmpi_A, self.__lstrcmpi_A_arguments],
+            'lstrcmpiW': [self.__lstrcmpi_A, self.__lstrcmpi_A_arguments],
+            'lstrcmpW': [self.__lstrcmp_A, self.__lstrcmp_A_arguments],
+            'lstrcpyA': [self.__lstrcpy_A, self.__lstrcpy_A_arguments],
+            'lstrcpynA': [self.__lstrcpyn_A, self.__lstrcpyn_A_arguments],
+            'lstrcpynW': [self.__lstrcpyn_A, self.__lstrcpyn_A_arguments],
+            'lstrcpyW': [self.__lstrcpy_A, self.__lstrcpy_A_arguments],
+            'lstrlenA': [self.__lstrlen_A, self.__lstrlen_A_arguments],
+            'lstrlenW': [self.__lstrlen_A, self.__lstrlen_A_arguments],
         })
 
     __access_check_and_audit_alarm_A_arguments = [
@@ -2517,3 +2570,434 @@ class WinBase(ApiBase):
     def __global_unlock(self, hMem):
         result = FunctionResult(0, FunctionResult.NUMBER) # memory object unlocked
         return self._wrap_results(result)
+
+    __has_overlapped_io_completed_arguments = [
+        FunctionArgument('lpOverlapped', FunctionArgument.ADDRESS)
+    ]
+
+    def __has_overlapped_io_completed(self, lpOverlapped):
+        return self._wrap_results(None)
+
+    __init_atom_table_arguments = [
+        FunctionArgument('nSize', FunctionArgument.NUMBER)
+    ]
+
+    def __init_atom_table(self, nSize):
+        return self._wrap_results(self._true_result())
+
+    __initialize_context_arguments = [
+        FunctionArgument('buffer', FunctionArgument.ADDRESS),
+        FunctionArgument('contextFlags', FunctionArgument.NUMBER),
+        FunctionArgument('context', FunctionArgument.ADDRESS),
+        FunctionArgument('contextLength', FunctionArgument.ADDRESS)
+    ]
+
+    def __initialize_context(self, buffer, contextFlags, context, contextLength):
+        return self._wrap_results([
+            self._true_result(),
+            self._new_address_result(target=context),
+            FunctionResult(1024**2, FunctionResult.NUMBER, target=contextLength) # fake 1MB context length
+        ])
+
+    __initialize_threadpool_environment_arguments = [
+        FunctionArgument('pcbe', FunctionArgument.ADDRESS)
+    ]
+
+    def __initialize_threadpool_environment(self, pcbe):
+        return self._wrap_results(None)
+
+    __interlocked_exchange_subtract_arguments = [
+        FunctionArgument('addend', FunctionArgument.ADDRESS),
+        FunctionArgument('value', FunctionArgument.NUMBER)
+    ]
+
+    def __interlocked_exchange_subtract(self, addend, value):
+        return self._wrap_results([
+            FunctionResult(int(addend, 16), FunctionResult.NUMBER),
+            FunctionResult(value, FunctionResult.NUMBER, target=addend)
+        ])
+
+    __is_bad_code_ptr_arguments = [
+        FunctionArgument('lpfn', FunctionArgument.ADDRESS)
+    ]
+
+    def __is_bad_code_ptr(self, lpfn):
+        result = FunctionResult(0, FunctionResult.NUMBER) # fake read access
+        return self._wrap_results(result)
+
+    __is_bad_read_ptr_arguments = [
+        FunctionArgument('lp', FunctionArgument.ADDRESS),
+        FunctionArgument('ucb', FunctionArgument.NUMBER)
+    ]
+
+    def __is_bad_read_ptr(self, lp, ucb):
+        result = FunctionResult(0, FunctionResult.NUMBER) # fake read access
+        return self._wrap_results(result)
+
+    __is_bad_string_ptr_A_arguments = [
+        FunctionArgument('lpsz', FunctionArgument.STRING),
+        FunctionArgument('ucchMax', FunctionArgument.NUMBER)
+    ]
+
+    def __is_bad_string_ptr_A(self, lpsz, ucchMax):
+        result = FunctionResult(0, FunctionResult.NUMBER) # fake read access
+        return self._wrap_results(result)
+
+    __is_bad_write_ptr_arguments = [
+        FunctionArgument('lp', FunctionArgument.ADDRESS),
+        FunctionArgument('ucb', FunctionArgument.NUMBER)
+    ]
+
+    def __is_bad_write_ptr(self, lp, ucb):
+        result = FunctionResult(0, FunctionResult.NUMBER) # fake write access
+        return self._wrap_results(result)
+
+    __is_native_vhd_boot_arguments = [
+        FunctionArgument('nativeVhdBoot', FunctionArgument.ADDRESS)
+    ]
+
+    def __is_native_vhd_boot(self, nativeVhdBoot):
+        return self._wrap_results([
+            self._false_result(), # fake not VHD
+            self._false_result(target=nativeVhdBoot)
+        ])
+
+    __is_system_resume_automatic_arguments = []
+
+    def __is_system_resume_automatic(self):
+        return self._wrap_results(self._false_result()) # fake user active
+
+    __is_text_unicode_arguments = [
+        FunctionArgument('lpv', FunctionArgument.ADDRESS),
+        FunctionArgument('iSize', FunctionArgument.NUMBER),
+        FunctionArgument('lpiResult', FunctionArgument.ADDRESS)
+    ]
+
+    def __is_text_unicode(self, lpv, iSize, lpiResult):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(1, FunctionResult.NUMBER, target=lpiResult)
+        ])
+
+    __load_module_arguments = [
+        FunctionArgument('lpModuleName', FunctionArgument.STRING),
+        FunctionArgument('lpParameterBlock', FunctionArgument.ADDRESS)
+    ]
+
+    def __load_module(self, lpModuleName, lpParameterBlock):
+        result = FunctionResult(32, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __load_packaged_library_arguments = [
+        FunctionArgument('lpwLibFileName', FunctionArgument.STRING),
+        FunctionArgument('reserved', FunctionArgument.NUMBER)
+    ]
+
+    def __load_packaged_library(self, lpwLibFileName, reserved):
+        return self._wrap_results(self._new_address_result())
+
+    __local_alloc_arguments = [
+        FunctionArgument('uFlags', FunctionArgument.NUMBER),
+        FunctionArgument('dwBytes', FunctionArgument.NUMBER)
+    ]
+
+    def __local_alloc(self, uFlags, dwBytes):
+        result = FunctionResult(dwBytes, FunctionResult.NUMBER, to_reference=True) if dwBytes > 0 else self._new_address_result()
+        return self._wrap_results(result)
+
+    __local_flags_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __local_flags(self, hMem):
+        result = FunctionResult(int('0x11111111', 16), FunctionResult.NUMBER) # fake allocation values and lock count
+        return self._wrap_results(result)
+
+    __local_free_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __local_free(self, hMem):
+        return self._wrap_results(self._null_result())
+
+    __local_handle_arguments = [
+        FunctionArgument('pMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __local_handle(self, pMem):
+        result = FunctionResult(int(pMem, 16), FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __local_lock_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __local_lock(self, hMem):
+        result = FunctionResult(int(hMem, 16), FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __local_re_alloc_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS),
+        FunctionArgument('dwBytes', FunctionArgument.NUMBER),
+        FunctionArgument('uFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __local_re_alloc(self, hMem, dwBytes, uFlags):
+        result = FunctionResult(dwBytes, FunctionResult.NUMBER, to_reference=True)
+        return self._wrap_results(result)
+
+    __local_size_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __local_size(self, hMem):
+        result = FunctionResult(10, FunctionResult.NUMBER) # fake 10 bytes of memory
+        return self._wrap_results(result)
+
+    __local_unlock_arguments = [
+        FunctionArgument('hMem', FunctionArgument.ADDRESS)
+    ]
+
+    def __local_unlock(self, hMem):
+        result = FunctionResult(0, FunctionResult.NUMBER) # memory object unlocked
+        return self._wrap_results(result)
+
+    __locate_X_state_feature_arguments = [
+        FunctionArgument('context', FunctionArgument.ADDRESS),
+        FunctionArgument('featureId', FunctionArgument.NUMBER),
+        FunctionArgument('length', FunctionArgument.ADDRESS)
+    ]
+
+    def __locate_X_state_feature(self, context, featureId, length):
+        return self._wrap_results([
+            self._new_address_result(),
+            FunctionResult(1024, FunctionResult.NUMBER, target=length) # fake 1KB length
+        ])
+
+    __logon_user_A_arguments = [
+        FunctionArgument('lpszUsername', FunctionArgument.STRING),
+        FunctionArgument('lpszDomain', FunctionArgument.STRING),
+        FunctionArgument('lpszPassword', FunctionArgument.STRING),
+        FunctionArgument('dwLogonType', FunctionArgument.NUMBER),
+        FunctionArgument('dwLogonProvider', FunctionArgument.NUMBER),
+        FunctionArgument('phToken', FunctionArgument.ADDRESS)
+    ]
+
+    def __logon_user_A(self, lpszUsername, lpszDomain, lpszPassword, dwLogonType, dwLogonProvider, phToken):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            self._new_address_result(target=phToken)
+        ])
+
+    __logon_user_ex_A_arguments = [
+        FunctionArgument('lpszUsername', FunctionArgument.STRING),
+        FunctionArgument('lpszDomain', FunctionArgument.STRING),
+        FunctionArgument('lpszPassword', FunctionArgument.STRING),
+        FunctionArgument('dwLogonType', FunctionArgument.NUMBER),
+        FunctionArgument('dwLogonProvider', FunctionArgument.NUMBER),
+        FunctionArgument('phToken', FunctionArgument.ADDRESS),
+        FunctionArgument('ppLogonSid', FunctionArgument.ADDRESS),
+        FunctionArgument('ppProfileBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('pdwProfileLength', FunctionArgument.ADDRESS),
+        FunctionArgument('pQuotaLimits', FunctionArgument.ADDRESS)
+    ]
+
+    def __logon_user_ex_A(self, lpszUsername, lpszDomain, lpszPassword, dwLogonType, dwLogonProvider, phToken, ppLogonSid, ppProfileBuffer, pdwProfileLength, pQuotaLimits):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            self._new_address_result(target=phToken),
+            self._new_address_result(target=ppLogonSid),
+            self._new_address_result(target=ppProfileBuffer),
+            FunctionResult(16, FunctionResult.NUMBER, target=pdwProfileLength) # fake 16 bytes
+        ])
+
+    __lookup_account_name_A_arguments = [
+        FunctionArgument('lpSystemName', FunctionArgument.STRING),
+        FunctionArgument('lpAccountName', FunctionArgument.STRING),
+        FunctionArgument('sid', FunctionArgument.ADDRESS),
+        FunctionArgument('cbSid', FunctionArgument.ADDRESS),
+        FunctionArgument('referencedDomainName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchReferencedDomainName', FunctionArgument.ADDRESS),
+        FunctionArgument('peUse', FunctionArgument.ADDRESS)
+    ]
+
+    def __lookup_account_name_A(self, lpSystemName, lpAccountName, sid, cbSid, referencedDomainName, cchReferencedDomainName, peUse):
+        domain = b'domain\x00'
+        result = [
+            FunctionResult(1, FunctionResult.NUMBER)
+        ]
+        if not util.is_zero(sid): result.append(self._new_address_result(target=sid))
+        if util.is_zero(cbSid): result.append(FunctionResult(len(domain), FunctionResult.NUMBER, target=cbSid))
+        if util.is_zero(referencedDomainName): result.append(FunctionResult(len(domain), FunctionResult.NUMBER, target=referencedDomainName))
+        else: result.append(FunctionResult(domain, FunctionResult.BYTES, target=referencedDomainName))
+        return self._wrap_results(result)
+
+    __lookup_account_sid_A_arguments = [
+        FunctionArgument('lpSystemName', FunctionArgument.STRING),
+        FunctionArgument('sid', FunctionArgument.ADDRESS),
+        FunctionArgument('name', FunctionArgument.ADDRESS),
+        FunctionArgument('cchName', FunctionArgument.ADDRESS),
+        FunctionArgument('referencedDomainName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchReferencedDomainName', FunctionArgument.ADDRESS),
+        FunctionArgument('peUse', FunctionArgument.ADDRESS)
+    ]
+
+    def __lookup_account_sid_A(self, lpSystemName, sid, name, cchName, referencedDomainName, cchReferencedDomainName, peUse):
+        account, domain = b'account\x00', b'domain\x00'
+        result = [
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(account, FunctionResult.BYTES, target=name),
+            FunctionResult(domain, FunctionResult.BYTES, target=referencedDomainName)
+        ]
+        if util.is_zero(cchName): result.append(FunctionResult(len(account), FunctionResult.NUMBER, target=cchName))
+        if util.is_zero(cchReferencedDomainName): result.append(FunctionResult(len(domain), FunctionResult.NUMBER, target=cchReferencedDomainName))
+        return self._wrap_results(result)
+
+    __lookup_account_sid_local_A_arguments = [
+        FunctionArgument('sid', FunctionArgument.ADDRESS),
+        FunctionArgument('name', FunctionArgument.ADDRESS),
+        FunctionArgument('cchName', FunctionArgument.ADDRESS),
+        FunctionArgument('referencedDomainName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchReferencedDomainName', FunctionArgument.ADDRESS),
+        FunctionArgument('peUse', FunctionArgument.ADDRESS)
+    ]
+
+    def __lookup_account_sid_local_A(self, sid, name, cchName, referencedDomainName, cchReferencedDomainName, peUse):
+        account, domain = b'account\x00', b'domain\x00'
+        result = [
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(account, FunctionResult.BYTES, target=name),
+            FunctionResult(domain, FunctionResult.BYTES, target=referencedDomainName)
+        ]
+        if util.is_zero(cchName): result.append(FunctionResult(len(account), FunctionResult.NUMBER, target=cchName))
+        if util.is_zero(cchReferencedDomainName): result.append(FunctionResult(len(domain), FunctionResult.NUMBER, target=cchReferencedDomainName))
+        return self._wrap_results(result)
+
+    __lookup_privilege_display_name_A_arguments = [
+        FunctionArgument('lpSystemName', FunctionArgument.STRING),
+        FunctionArgument('lpName', FunctionArgument.STRING),
+        FunctionArgument('lpDisplayName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchDisplayName', FunctionArgument.ADDRESS),
+        FunctionArgument('lpLanguageId', FunctionArgument.ADDRESS)
+    ]
+
+    def __lookup_privilege_display_name_A(self, lpSystemName, lpName, lpDisplayName, cchDisplayName, lpLanguageId):
+        data = b'display_name'
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00', FunctionResult.BYTES, target=lpDisplayName),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=cchDisplayName),
+            FunctionResult(1, FunctionResult.NUMBER, target=lpLanguageId)
+        ])
+
+    __lookup_privilege_name_A_arguments = [
+        FunctionArgument('lpSystemName', FunctionArgument.STRING),
+        FunctionArgument('lpLuid', FunctionArgument.ADDRESS),
+        FunctionArgument('lpName', FunctionArgument.ADDRESS),
+        FunctionArgument('cchName', FunctionArgument.ADDRESS)
+    ]
+
+    def __lookup_privilege_name_A(self, lpSystemName, lpLuid, lpName, cchName):
+        data = b'privilege_name'
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00', FunctionResult.BYTES, target=lpName),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=cchName)
+        ])
+
+    __lookup_privilege_value_A_arguments = [
+        FunctionArgument('lpSystemName', FunctionArgument.STRING),
+        FunctionArgument('lpName', FunctionArgument.ADDRESS),
+        FunctionArgument('lpLuid', FunctionArgument.ADDRESS)
+    ]
+
+    def __lookup_privilege_value_A(self, lpSystemName, lpName, lpLuid):
+        data = b'privilege_name'
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00', FunctionResult.BYTES, target=lpName),
+            FunctionResult(5, FunctionResult.NUMBER, target=lpLuid) # fake 5 LUID
+        ])
+
+    __lpprogress_routine_arguments = [
+        FunctionArgument('totalFileSize', FunctionArgument.NUMBER),
+        FunctionArgument('totalBytesTransferred', FunctionArgument.NUMBER),
+        FunctionArgument('streamSize', FunctionArgument.NUMBER),
+        FunctionArgument('streamBytesTransferred', FunctionArgument.NUMBER),
+        FunctionArgument('dwStreamNumber', FunctionArgument.ADDRESS),
+        FunctionArgument('dwCallbackReason', FunctionArgument.NUMBER),
+        FunctionArgument('hSourceFile', FunctionArgument.ADDRESS),
+        FunctionArgument('hDestinationFile', FunctionArgument.ADDRESS),
+        FunctionArgument('lpData', FunctionArgument.ADDRESS)
+    ]
+
+    def __lpprogress_routine(self, totalFileSize, totalBytesTransferred, streamSize, streamBytesTransferred, dwStreamNumber, dwCallbackReason, hSourceFile, hDestinationFile, lpData):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __lstrcat_A_arguments = [
+        FunctionArgument('lpString1', FunctionArgument.STRING),
+        FunctionArgument('lpString2', FunctionArgument.STRING)
+    ]
+
+    def __lstrcat_A(self, lpString1, lpString2):
+        data = (lpString1+lpString2).encode() + b'\x00'
+        result = FunctionResult(data, FunctionResult.BYTES, to_reference=True)
+        return self._wrap_results(result)
+
+    __lstrcmp_A_arguments = [
+        FunctionArgument('lpString1', FunctionArgument.STRING),
+        FunctionArgument('lpString2', FunctionArgument.STRING)
+    ]
+
+    def __lstrcmp_A(self, lpString1, lpString2):
+        if lpString1 < lpString2: result = FunctionResult(-1, FunctionResult.NUMBER)
+        elif lpString1 > lpString2: result = FunctionResult(1, FunctionResult.NUMBER)
+        else: result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __lstrcmpi_A_arguments = [
+        FunctionArgument('lpString1', FunctionArgument.STRING),
+        FunctionArgument('lpString2', FunctionArgument.STRING)
+    ]
+
+    def __lstrcmpi_A(self, lpString1, lpString2):
+        lpString1, lpString2 = lpString1.lower(), lpString2.lower()
+        if lpString1 < lpString2: result = FunctionResult(-1, FunctionResult.NUMBER)
+        elif lpString1 > lpString2: result = FunctionResult(1, FunctionResult.NUMBER)
+        else: result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __lstrcpy_A_arguments = [
+        FunctionArgument('lpString1', FunctionArgument.ADDRESS),
+        FunctionArgument('lpString2', FunctionArgument.STRING)
+    ]
+
+    def __lstrcpy_A(self, lpString1, lpString2):
+        data = lpString2.encode()+b'\x00'
+        return self._wrap_results([
+            FunctionResult(int(lpString1, 16), FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=lpString1)
+        ])
+
+    __lstrcpyn_A_arguments = [
+        FunctionArgument('lpString1', FunctionArgument.ADDRESS),
+        FunctionArgument('lpString2', FunctionArgument.STRING),
+        FunctionArgument('lpStriiMaxLengthng2', FunctionArgument.NUMBER)
+    ]
+
+    def __lstrcpyn_A(self, lpString1, lpString2, lpStriiMaxLengthng2):
+        data = lpString2.encode()[:lpStriiMaxLengthng2-1]+b'\x00'
+        return self._wrap_results([
+            FunctionResult(int(lpString1, 16), FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=lpString1)
+        ])
+
+    __lstrlen_A_arguments = [
+        FunctionArgument('lpString', FunctionArgument.STRING)
+    ]
+
+    def __lstrlen_A(self, lpString):
+        result = FunctionResult(len(lpString.encode()) if lpString else 0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+        
