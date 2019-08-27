@@ -94,7 +94,7 @@ class WinBase(ApiBase):
             'CreateUmsThreadContext': [self.__create_ums_thread_context, self.__create_ums_thread_context_arguments],
             'DeactivateActCtx': [self.__deactivate_act_ctx, self.__deactivate_act_ctx_arguments],
             'DebugBreakProcess': [self.__debug_break_process, self.__debug_break_process_arguments],
-            "DebugSetProcessKillOnExit": [self.__debug_set_process_kill_on_exit, self.__debug_set_process_kill_on_exit_arguments],
+            'DebugSetProcessKillOnExit': [self.__debug_set_process_kill_on_exit, self.__debug_set_process_kill_on_exit_arguments],
             'DecryptFileA': [self.__decrypt_file_A, self.__decrypt_file_A_arguments],
             'DecryptFileW': [self.__decrypt_file_A, self.__decrypt_file_A_arguments],
             'DefineDosDeviceA': [self.__define_dos_device_A, self.__define_dos_device_A_arguments],
@@ -333,6 +333,55 @@ class WinBase(ApiBase):
             'lstrcpyW': [self.__lstrcpy_A, self.__lstrcpy_A_arguments],
             'lstrlenA': [self.__lstrlen_A, self.__lstrlen_A_arguments],
             'lstrlenW': [self.__lstrlen_A, self.__lstrlen_A_arguments],
+            'MapUserPhysicalPagesScatter': [self.__map_user_physical_pages_scatter, self.__map_user_physical_pages_scatter_arguments],
+            'MapViewOfFileExNuma': [self.__map_view_of_file_ex_numa, self.__map_view_of_file_ex_numa_arguments],
+            'MoveFile': [self.__move_file, self.__move_file_arguments],
+            'MoveFileA': [self.__move_file, self.__move_file_arguments],
+            'MoveFileExA': [self.__move_file_ex_A, self.__move_file_ex_A_arguments],
+            'MoveFileExW': [self.__move_file_ex_A, self.__move_file_ex_A_arguments],
+            'MoveFileTransactedA': [self.__move_file_transacted_A, self.__move_file_transacted_A_arguments],
+            'MoveFileTransactedW': [self.__move_file_transacted_A, self.__move_file_transacted_A_arguments],
+            'MoveFileW': [self.__move_file, self.__move_file_arguments],
+            'MoveFileWithProgressA': [self.__move_file_with_progress_A, self.__move_file_with_progress_A_arguments],
+            'MoveFileWithProgressW': [self.__move_file_with_progress_A, self.__move_file_with_progress_A_arguments],
+            'MulDiv': [self.__mul_div, self.__mul_div_arguments],
+            'NotifyChangeEventLog': [self.__notify_change_event_log, self.__notify_change_event_log_arguments],
+            'ObjectCloseAuditAlarmA': [self.__object_close_audit_alarm_A, self.__object_close_audit_alarm_A_arguments],
+            'ObjectDeleteAuditAlarmA': [self.__object_delete_audit_alarm_A, self.__object_delete_audit_alarm_A_arguments],
+            'ObjectOpenAuditAlarmA': [self.__object_open_audit_alarm_A, self.__object_open_audit_alarm_A_arguments],
+            'ObjectPrivilegeAuditAlarmA': [self.__object_privilege_audit_alarm_A, self.__object_privilege_audit_alarm_A_arguments],
+            'OpenBackupEventLogA': [self.__open_backup_event_log_A, self.__open_backup_event_log_A_arguments],
+            'OpenBackupEventLogW': [self.__open_backup_event_log_A, self.__open_backup_event_log_A_arguments],
+            'OpenCommPort': [self.__open_comm_port, self.__open_comm_port_arguments],
+            'OpenEncryptedFileRawA': [self.__open_encrypted_file_raw_A, self.__open_encrypted_file_raw_A_arguments],
+            'OpenEncryptedFileRawW': [self.__open_encrypted_file_raw_A, self.__open_encrypted_file_raw_A_arguments],
+            'OpenEventLogA': [self.__open_event_log_A, self.__open_event_log_A_arguments],
+            'OpenEventLogW': [self.__open_event_log_A, self.__open_event_log_A_arguments],
+            'OpenFile': [self.__open_file, self.__open_file_arguments],
+            'OpenFileById': [self.__open_file_by_id, self.__open_file_by_id_arguments],
+            'OpenFileMappingA': [self.__open_file_mapping_A, self.__open_file_mapping_A_arguments],
+            'OpenJobObjectA': [self.__open_job_object_A, self.__open_job_object_A_arguments],
+            'OpenPrivateNamespaceA': [self.__open_private_namespace_A, self.__open_private_namespace_A_arguments],
+            'OperationEnd': [self.__operation_end, self.__operation_end_arguments],
+            'OperationStart': [self.__operation_start, self.__operation_start_arguments],
+            'Pcopyfile2ProgressRoutine': [self.__pcopyfile2_progress_routine, self.__pcopyfile2_progress_routine_arguments],
+            'PfeExportFunc': [self.__pfe_export_func, self.__pfe_export_func_arguments],
+            'PfeImportFunc': [self.__pfe_import_func, self.__pfe_import_func_arguments],
+            'PfiberStartRoutine': [self.__pfiber_start_routine, self.__pfiber_start_routine_arguments],
+            'PowerClearRequest': [self.__power_clear_request, self.__power_clear_request_arguments],
+            'PowerCreateRequest': [self.__power_create_request, self.__power_create_request_arguments],
+            'PowerSetRequest': [self.__power_set_request, self.__power_set_request_arguments],
+            'PrepareTape': [self.__prepare_tape, self.__prepare_tape_arguments],
+            'PrivilegedServiceAuditAlarmA': [self.__privileged_service_audit_alarm_A, self.__privileged_service_audit_alarm_A_arguments],
+            'PulseEvent': [self.__pulse_event, self.__pulse_event_arguments],
+            'PurgeComm': [self.__purge_comm, self.__purge_comm_arguments],
+            'QueryActCtxSettingsW': [self.__query_act_ctx_settings_W, self.__query_act_ctx_settings_W_arguments],
+            'QueryActCtxW': [self.__query_act_ctx_W, self.__query_act_ctx_W_arguments],
+            'QueryDosDeviceA': [self.__query_dos_device_A, self.__query_dos_device_A_arguments],
+            'QueryFullProcessImageNameA': [self.__query_full_process_image_name_A, self.__query_full_process_image_name_A_arguments],
+            'QueryFullProcessImageNameW': [self.__query_full_process_image_name_A, self.__query_full_process_image_name_A_arguments],
+            'QueryThreadProfiling': [self.__query_thread_profiling, self.__query_thread_profiling_arguments],
+            'QueryUmsThreadInformation': [self.__query_ums_thread_information, self.__query_ums_thread_information_arguments],
         })
 
     __access_check_and_audit_alarm_A_arguments = [
@@ -3000,4 +3049,437 @@ class WinBase(ApiBase):
     def __lstrlen_A(self, lpString):
         result = FunctionResult(len(lpString.encode()) if lpString else 0, FunctionResult.NUMBER)
         return self._wrap_results(result)
+
+    __map_user_physical_pages_scatter_arguments = [
+        FunctionArgument('virtualAddresses', FunctionArgument.ADDRESS),
+        FunctionArgument('numberOfPages', FunctionArgument.NUMBER),
+        FunctionArgument('pageArray', FunctionArgument.ADDRESS)
+    ]
+
+    def __map_user_physical_pages_scatter(self, virtualAddresses, numberOfPages, pageArray):
+        return self._wrap_results(self._true_result())
+
+    __map_view_of_file_ex_numa_arguments = [
+        FunctionArgument('hFileMappingObject', FunctionArgument.ADDRESS),
+        FunctionArgument('dwDesiredAccess', FunctionArgument.NUMBER),
+        FunctionArgument('dwFileOffsetHigh', FunctionArgument.NUMBER),
+        FunctionArgument('dwFileOffsetLow', FunctionArgument.NUMBER),
+        FunctionArgument('dwNumberOfBytesToMap', FunctionArgument.NUMBER),
+        FunctionArgument('lpBaseAddress', FunctionArgument.ADDRESS),
+        FunctionArgument('nndPreferred', FunctionArgument.NUMBER)
+    ]
+
+    def __map_view_of_file_ex_numa(self, hFileMappingObject, dwDesiredAccess, dwFileOffsetHigh, dwFileOffsetLow, dwNumberOfBytesToMap, lpBaseAddress, nndPreferred):
+        offset = dwFileOffsetHigh*(2**8) + dwFileOffsetLow
+        address = offset + int(lpBaseAddress, 16)
+        result = FunctionResult(address, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __move_file_arguments = [
+        FunctionArgument('lpExistingFileName', FunctionArgument.STRING),
+        FunctionArgument('lpNewFileName', FunctionArgument.STRING)
+    ]
+
+    def __move_file(self, lpExistingFileName, lpNewFileName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __move_file_ex_A_arguments = [
+        FunctionArgument('lpExistingFileName', FunctionArgument.STRING),
+        FunctionArgument('lpNewFileName', FunctionArgument.STRING),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __move_file_ex_A(self, lpExistingFileName, lpNewFileName, dwFlags):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __move_file_transacted_A_arguments = [
+        FunctionArgument('lpExistingFileName', FunctionArgument.STRING),
+        FunctionArgument('lpNewFileName', FunctionArgument.STRING),
+        FunctionArgument('lpProgressRoutine', FunctionArgument.ADDRESS),
+        FunctionArgument('lpData', FunctionArgument.ADDRESS),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('hTransaction', FunctionArgument.ADDRESS)
+    ]
+
+    def __move_file_transacted_A(self, lpExistingFileName, lpNewFileName, lpProgressRoutine, lpData, dwFlags, hTransaction):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __move_file_with_progress_A_arguments = [
+        FunctionArgument('lpExistingFileName', FunctionArgument.STRING),
+        FunctionArgument('lpNewFileName', FunctionArgument.STRING),
+        FunctionArgument('lpProgressRoutine', FunctionArgument.ADDRESS),
+        FunctionArgument('lpData', FunctionArgument.ADDRESS),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+    ]
+
+    def __move_file_with_progress_A(self, lpExistingFileName, lpNewFileName, lpProgressRoutine, lpData, dwFlags):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __mul_div_arguments = [
+        FunctionArgument('nNumber', FunctionArgument.NUMBER),
+        FunctionArgument('nNumerator', FunctionArgument.NUMBER),
+        FunctionArgument('nDenominator', FunctionArgument.NUMBER)
+    ]
+
+    def __mul_div(self, nNumber, nNumerator, nDenominator):
+        result = round(nNumber*nNumerator/nDenominator) if nDenominator else -1
+        result = FunctionResult(result, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __notify_change_event_log_arguments = [
+        FunctionArgument('hEventLog', FunctionArgument.ADDRESS),
+        FunctionArgument('hEvent', FunctionArgument.ADDRESS)
+    ]
+
+    def __notify_change_event_log(self, hEventLog, hEvent):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __object_close_audit_alarm_A_arguments = [
+        FunctionArgument('subsystemName', FunctionArgument.STRING),
+        FunctionArgument('handleId', FunctionArgument.NUMBER),
+        FunctionArgument('generateOnClose', FunctionArgument.NUMBER)
+    ]
+
+    def __object_close_audit_alarm_A(self, subsystemName, handleId, generateOnClose):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __object_delete_audit_alarm_A_arguments = [
+        FunctionArgument('subsystemName', FunctionArgument.STRING),
+        FunctionArgument('handleId', FunctionArgument.NUMBER),
+        FunctionArgument('generateOnClose', FunctionArgument.NUMBER)
+    ]
+
+    def __object_delete_audit_alarm_A(self, subsystemName, handleId, generateOnClose):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __object_open_audit_alarm_A_arguments = [
+        FunctionArgument('subsystemName', FunctionArgument.STRING),
+        FunctionArgument('handleId', FunctionArgument.NUMBER),
+        FunctionArgument('objectTypeName', FunctionArgument.STRING),
+        FunctionArgument('objectName', FunctionArgument.STRING),
+        FunctionArgument('pSecurityDescriptor', FunctionArgument.ADDRESS),
+        FunctionArgument('clientToken', FunctionArgument.ADDRESS),
+        FunctionArgument('desiredAccess', FunctionArgument.NUMBER),
+        FunctionArgument('grantedAccess', FunctionArgument.NUMBER),
+        FunctionArgument('privileges', FunctionArgument.ADDRESS),
+        FunctionArgument('objectCreation', FunctionArgument.NUMBER),
+        FunctionArgument('accessGranted', FunctionArgument.NUMBER),
+        FunctionArgument('generateOnClose', FunctionArgument.NUMBER)
+    ]
+
+    def __object_open_audit_alarm_A(self, subsystemName, handleId, objectTypeName, objectName, pSecurityDescriptor, clientToken, desiredAccess, grantedAccess, privileges, objectCreation, accessGranted, generateOnClose):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __object_privilege_audit_alarm_A_arguments = [
+        FunctionArgument('subsystemName', FunctionArgument.STRING),
+        FunctionArgument('handleId', FunctionArgument.NUMBER),
+        FunctionArgument('clientToken', FunctionArgument.ADDRESS),
+        FunctionArgument('desiredAccess', FunctionArgument.NUMBER),
+        FunctionArgument('privileges', FunctionArgument.ADDRESS),
+        FunctionArgument('accessGranted', FunctionArgument.NUMBER),
+    ]
+
+    def __object_privilege_audit_alarm_A(self, subsystemName, handleId, clientToken, desiredAccess, privileges, accessGranted):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __open_backup_event_log_A_arguments = [
+        FunctionArgument('lpUNCServerName', FunctionArgument.STRING),
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __open_backup_event_log_A(self, lpUNCServerName, lpFileName):
+        return self._wrap_results(self._new_address_result())
+
+    __open_comm_port_arguments = [
+        FunctionArgument('uPortNumber', FunctionArgument.NUMBER),
+        FunctionArgument('dwDesiredAccess', FunctionArgument.NUMBER),
+        FunctionArgument('dwFlagsAndAttributes', FunctionArgument.NUMBER)
+    ]
+
+    def __open_comm_port(self, uPortNumber, dwDesiredAccess, dwFlagsAndAttributes):
+        return self._wrap_results(self._new_address_result())
+
+    __open_encrypted_file_raw_A_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('ulFlags', FunctionArgument.NUMBER),
+        FunctionArgument('pvContext', FunctionArgument.ADDRESS)
+    ]
+
+    def __open_encrypted_file_raw_A(self, lpFileName, ulFlags, pvContext):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __open_event_log_A_arguments = [
+        FunctionArgument('lpUNCServerName', FunctionArgument.STRING),
+        FunctionArgument('lpSourceName', FunctionArgument.STRING)
+    ]
+
+    def __open_event_log_A(self, lpUNCServerName, lpSourceName):
+        return self._wrap_results(self._new_address_result())
+
+    __open_file_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('lpReOpenBuff', FunctionArgument.ADDRESS),
+        FunctionArgument('uStyle', FunctionArgument.NUMBER)
+    ]
+
+    def __open_file(self, lpFileName, lpReOpenBuff, uStyle):
+        return self._wrap_results(self._new_address_result())
+
+    __open_file_by_id_arguments = [
+        FunctionArgument('hVolumeHint', FunctionArgument.ADDRESS),
+        FunctionArgument('lpFileId', FunctionArgument.ADDRESS),
+        FunctionArgument('dwDesiredAccess', FunctionArgument.NUMBER),
+        FunctionArgument('dwShareMode', FunctionArgument.NUMBER),
+        FunctionArgument('lpSecurityAttributes', FunctionArgument.NUMBER),
+        FunctionArgument('dwFlagsAndAttributes', FunctionArgument.NUMBER)
+    ]
+
+    def __open_file_by_id(self, hVolumeHint, lpFileId, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwFlagsAndAttributes):
+        return self._wrap_results(self._new_address_result())
+
+    __open_file_mapping_A_arguments = [
+        FunctionArgument('dwDesiredAccess', FunctionArgument.NUMBER),
+        FunctionArgument('bInheritHandle', FunctionArgument.NUMBER),
+        FunctionArgument('lpName', FunctionArgument.STRING)
+    ]
+
+    def __open_file_mapping_A(self, dwDesiredAccess, bInheritHandle, lpName):
+        return self._wrap_results(self._new_address_result())
+
+    __open_job_object_A_arguments = [
+        FunctionArgument('dwDesiredAccess', FunctionArgument.NUMBER),
+        FunctionArgument('bInheritHandle', FunctionArgument.NUMBER),
+        FunctionArgument('lpName', FunctionArgument.STRING)
+    ]
+
+    def __open_job_object_A(self, dwDesiredAccess, bInheritHandle, lpName):
+        return self._wrap_results(self._new_address_result())
+
+    __open_private_namespace_A_arguments = [
+        FunctionArgument('lpBoundaryDescriptor', FunctionArgument.ADDRESS),
+        FunctionArgument('lpAliasPrefix', FunctionArgument.STRING)
+    ]
+
+    def __open_private_namespace_A(self, lpBoundaryDescriptor, lpAliasPrefix):
+        return self._wrap_results(self._new_address_result())
+
+    __operation_end_arguments = [
+        FunctionArgument('operationEndParams', FunctionArgument.ADDRESS)
+    ]
+
+    def __operation_end(self, operationEndParams):
+        return self._wrap_results(self._true_result())
+
+    __operation_start_arguments = [
+        FunctionArgument('operationStartParams', FunctionArgument.ADDRESS)
+    ]
+
+    def __operation_start(self, operationStartParams):
+        return self._wrap_results(self._true_result())
+
+    __pcopyfile2_progress_routine_arguments = [
+        FunctionArgument('pMessage', FunctionArgument.ADDRESS),
+        FunctionArgument('pvCallbackContext', FunctionArgument.ADDRESS)
+    ]
+
+    def __pcopyfile2_progress_routine(self, pMessage, pvCallbackContext):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __pfe_export_func_arguments = [
+        FunctionArgument('pbData', FunctionArgument.ADDRESS),
+        FunctionArgument('pvCallbackContext', FunctionArgument.ADDRESS),
+        FunctionArgument('ulLength', FunctionArgument.NUMBER)
+    ]
+
+    def __pfe_export_func(self, pbData, pvCallbackContext, ulLength):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __pfe_import_func_arguments = [
+        FunctionArgument('pbData', FunctionArgument.ADDRESS),
+        FunctionArgument('pvCallbackContext', FunctionArgument.ADDRESS),
+        FunctionArgument('ulLength', FunctionArgument.NUMBER)
+    ]
+
+    def __pfe_import_func(self, pbData, pvCallbackContext, ulLength):
+        data = b'some fake data'[:ulLength]
+        return self._wrap_results([
+            FunctionResult(0, FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=pbData)
+        ])
+
+    __pfiber_start_routine_arguments = [
+        FunctionArgument('lpFiberParameter', FunctionArgument.ADDRESS)
+    ]
+
+    def __pfiber_start_routine(self, lpFiberParameter):
+        return self._wrap_results(None)
+
+    __power_clear_request_arguments = [
+        FunctionArgument('powerRequest', FunctionArgument.ADDRESS),
+        FunctionArgument('requestType', FunctionArgument.NUMBER)
+    ]
+
+    def __power_clear_request(self, powerRequest, requestType):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __power_create_request_arguments = [
+        FunctionArgument('context', FunctionArgument.ADDRESS)
+    ]
+
+    def __power_create_request(self, context):
+        return self._wrap_results(self._new_address_result())
+
+    __power_set_request_arguments = [
+        FunctionArgument('powerRequest', FunctionArgument.ADDRESS),
+        FunctionArgument('requestType', FunctionArgument.NUMBER)
+    ]
+
+    def __power_set_request(self, powerRequest, requestType):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __prepare_tape_arguments = [
+        FunctionArgument('hDevice', FunctionArgument.ADDRESS),
+        FunctionArgument('dwOperation', FunctionArgument.NUMBER),
+        FunctionArgument('bImmediate', FunctionArgument.NUMBER)
+    ]
+
+    def __prepare_tape(self, hDevice, dwOperation, bImmediate):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __privileged_service_audit_alarm_A_arguments = [
+        FunctionArgument('subsystemName', FunctionArgument.STRING),
+        FunctionArgument('serviceName', FunctionArgument.STRING),
+        FunctionArgument('clientToken', FunctionArgument.ADDRESS),
+        FunctionArgument('privileges', FunctionArgument.ADDRESS),
+        FunctionArgument('accessGranted', FunctionArgument.NUMBER)
+    ]
+
+    def __privileged_service_audit_alarm_A(self, subsystemName, serviceName, clientToken, privileges, accessGranted):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __pulse_event_arguments = [
+        FunctionArgument('hEvent', FunctionArgument.ADDRESS)
+    ]
+
+    def __pulse_event(self, hEvent):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __purge_comm_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __purge_comm(self, hFile, dwFlags):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __query_act_ctx_settings_W_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('hActCtx', FunctionArgument.ADDRESS),
+        FunctionArgument('settingsNameSpace', FunctionArgument.STRING),
+        FunctionArgument('settingName', FunctionArgument.STRING),
+        FunctionArgument('pvBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('dwBuffer', FunctionArgument.NUMBER),
+        FunctionArgument('pdwWrittenOrRequired', FunctionArgument.ADDRESS)
+    ]
+
+    def __query_act_ctx_settings_W(self, dwFlags, hActCtx, settingsNameSpace, settingName, pvBuffer, dwBuffer, pdwWrittenOrRequired):
+        data = b'context_query_results\x00'
+        return self._wrap_results([
+            self._true_result(),
+            FunctionResult(data[:dwBuffer], FunctionResult.BYTES, target=pvBuffer),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=pdwWrittenOrRequired)
+        ])
+
+    __query_act_ctx_W_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('hActCtx', FunctionArgument.ADDRESS),
+        FunctionArgument('pvSubInstance', FunctionArgument.NUMBER),
+        FunctionArgument('ulInfoClass', FunctionArgument.NUMBER),
+        FunctionArgument('pvBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('cbBuffer', FunctionArgument.NUMBER),
+        FunctionArgument('pcbWrittenOrRequired', FunctionArgument.ADDRESS)
+    ]
+
+    def __query_act_ctx_W(self, dwFlags, hActCtx, pvSubInstance, ulInfoClass, pvBuffer, cbBuffer, pcbWrittenOrRequired):
+        data = b'fake_context_information'
+        result = [
+            self._true_result()
+        ]
+        if not util.is_zero(pvBuffer):
+            result.append(FunctionResult(data[:cbBuffer-1]+b'\x00', FunctionResult.BYTES, target=pvBuffer))
+            result.append(FunctionResult(len(data)+1, FunctionResult.NUMBER, target=pcbWrittenOrRequired))
+        return self._wrap_results(result)
+
+    __query_dos_device_A_arguments = [
+        FunctionArgument('lpDeviceName', FunctionArgument.STRING),
+        FunctionArgument('lpTargetPath', FunctionArgument.ADDRESS),
+        FunctionArgument('ucchMax', FunctionArgument.NUMBER)
+    ]
+
+    def __query_dos_device_A(self, lpDeviceName, lpTargetPath, ucchMax):
+        data = b'devicename1\x00devicename2'[:ucchMax-2] + b'\x00\x00' # fake device names
+        return self._wrap_results([
+            FunctionResult(len(data), FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=lpTargetPath)
+        ])
+
+    __query_full_process_image_name_A_arguments = [
+        FunctionArgument('hProcess', FunctionArgument.ADDRESS),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER),
+        FunctionArgument('lpExeName', FunctionArgument.ADDRESS),
+        FunctionArgument('lpdwSize', FunctionArgument.ADDRESS)
+    ]
+
+    def __query_full_process_image_name_A(self, hProcess, dwFlags, lpExeName, lpdwSize):
+        data = b'C:\\path\\to\\image' # fake image full path
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data+b'\x00', FunctionResult.BYTES, target=lpExeName),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=lpdwSize)
+        ])
+
+    __query_thread_profiling_arguments = [
+        FunctionArgument('threadHandle', FunctionArgument.ADDRESS),
+        FunctionArgument('enabled', FunctionArgument.ADDRESS)
+    ]
+
+    def __query_thread_profiling(self, threadHandle, enabled):
+        return self._wrap_results([
+            FunctionResult(0, FunctionResult.NUMBER),
+            self._true_result(target=enabled)
+        ])
+
+    __query_ums_thread_information_arguments = [
+        FunctionArgument('umsThread', FunctionArgument.ADDRESS),
+        FunctionArgument('umsThreadInfoClass', FunctionArgument.NUMBER),
+        FunctionArgument('umsThreadInformation', FunctionArgument.ADDRESS),
+        FunctionArgument('umsThreadInformationLength', FunctionArgument.NUMBER),
+        FunctionArgument('returnLength', FunctionArgument.ADDRESS)
+    ]
+
+    def __query_ums_thread_information(self, umsThread, umsThreadInfoClass, umsThreadInformation, umsThreadInformationLength, returnLength):
+        data = b'some_thread_information\x00'[:umsThreadInformationLength] # fake thread information
+        return self._wrap_results([
+            FunctionResult(1, FunctionArgument.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=umsThreadInformation),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=returnLength)
+        ])
         
