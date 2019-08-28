@@ -382,6 +382,106 @@ class WinBase(ApiBase):
             'QueryFullProcessImageNameW': [self.__query_full_process_image_name_A, self.__query_full_process_image_name_A_arguments],
             'QueryThreadProfiling': [self.__query_thread_profiling, self.__query_thread_profiling_arguments],
             'QueryUmsThreadInformation': [self.__query_ums_thread_information, self.__query_ums_thread_information_arguments],
+            'ReadDirectoryChangesExW': [self.__read_directory_changes_ex_W, self.__read_directory_changes_ex_W_arguments],
+            'ReadDirectoryChangesW': [self.__read_directory_changes_W, self.__ReadDirectoryChangesW_arguments],
+            'ReadEncryptedFileRaw': [self.__read_encrypted_file_raw, self.__read_encrypted_file_raw_arguments],
+            'ReadEventLogA': [self.__read_event_log_A, self.__read_event_log_A_arguments],
+            'ReadEventLogW': [self.__read_event_log_A, self.__read_event_log_A_arguments],
+            'ReadThreadProfilingData': [self.__read_thread_profiling_data, self.__read_thread_profiling_data_arguments],
+            'RegisterApplicationRecoveryCallback': [self.__register_application_recovery_callback, self.__register_application_recovery_callback_arguments],
+            'RegisterApplicationRestart': [self.__register_application_restart, self.__register_application_restart_arguments],
+            'RegisterEventSourceA': [self.__register_event_source_A, self.__register_event_source_A_arguments],
+            'RegisterEventSourceW': [self.__register_event_source_A, self.__register_event_source_A_arguments],
+            'RegisterWaitForSingleObject': [self.__register_wait_for_single_object, self.__register_wait_for_single_object_arguments],
+            'ReleaseActCtx': [self.__release_act_ctx, self.__release_act_ctx_arguments],
+            'RemoveDirectoryTransactedA': [self.__remove_directory_transacted_A, self.__remove_directory_transacted_A_arguments],
+            'RemoveDirectoryTransactedW': [self.__remove_directory_transacted_A, self.__remove_directory_transacted_A_arguments],
+            'RemoveSecureMemoryCacheCallback': [self.__remove_secure_memory_cache_callback, self.__remove_secure_memory_cache_callback_arguments],
+            'ReOpenFile': [self.__re_open_file, self.__re_open_file_arguments],
+            'ReplaceFileA': [self.__replace_file_A, self.__replace_file_A_arguments],
+            'ReplaceFileW': [self.__replace_file_A, self.__replace_file_A_arguments],
+            'ReportEventA': [self.__report_event_A, self.__report_event_A_arguments],
+            'ReportEventW': [self.__report_event_A, self.__report_event_A_arguments],
+            'RequestWakeupLatency': [self.__request_wakeup_latency, self.__request_wakeup_latency_arguments],
+            'SetCommBreak': [self.__set_comm_break, self.__set_comm_break_arguments],
+            'SetCommConfig': [self.__set_comm_config, self.__set_comm_config_arguments],
+            'SetCommMask': [self.__set_comm_mask, self.__set_comm_mask_arguments],
+            'SetCommState': [self.__set_comm_state, self.__set_comm_state_arguments],
+            'SetCommTimeouts': [self.__set_comm_timeouts, self.__set_comm_timeouts_arguments],
+            'SetCurrentDirectory': [self.__set_current_directory, self.__set_current_directory_arguments],
+            'SetDefaultCommConfigA': [self.__set_default_comm_config_A, self.__set_default_comm_config_A_arguments],
+            'SetDefaultCommConfigW': [self.__set_default_comm_config_A, self.__set_default_comm_config_A_arguments],
+            'SetDllDirectoryA': [self.__set_dll_directory_A, self.__set_dll_directory_A_arguments],
+            'SetDllDirectoryW': [self.__set_dll_directory_A, self.__set_dll_directory_A_arguments],
+            'SetEnvironmentVariable': [self.__set_environment_variable, self.__set_environment_variable_arguments],
+            'SetFileAttributesTransactedA': [self.__set_file_attributes_transacted_A, self.__set_file_attributes_transacted_A_arguments],
+            'SetFileAttributesTransactedW': [self.__set_file_attributes_transacted_A, self.__set_file_attributes_transacted_A_arguments],
+            'SetFileBandwidthReservation': [self.__set_file_bandwidth_reservation, self.__set_file_bandwidth_reservation_arguments],
+            'SetFileCompletionNotificationModes': [self.__set_file_completion_notification_modes, self.__set_file_completion_notification_modes_arguments],
+            'SetFileSecurityA': [self.__set_file_security_A, self.__set_file_security_A_arguments],
+            'SetFileShortNameA': [self.__set_file_short_name_A, self.__set_file_short_name_A_arguments],
+            'SetFileShortNameW': [self.__set_file_short_name_A, self.__set_file_short_name_A_arguments],
+            'SetFirmwareEnvironmentVariableA': [self.__set_firmware_environment_variable_A, self.__set_firmware_environment_variable_A_arguments],
+            'SetFirmwareEnvironmentVariableExA': [self.__set_firmware_environment_variable_ex_A, self.__set_firmware_environment_variable_ex_A_arguments],
+            'SetFirmwareEnvironmentVariableExW': [self.__set_firmware_environment_variable_ex_A, self.__set_firmware_environment_variable_ex_A_arguments],
+            'SetFirmwareEnvironmentVariableW': [self.__set_firmware_environment_variable_A, self.__set_firmware_environment_variable_A_arguments],
+            'SetHandleCount': [self.__set_handle_count, self.__set_handle_count_arguments],
+            'SetMailslotInfo': [self.__set_mailslot_info, self.__set_mailslot_info_arguments],
+            'SetProcessAffinityMask': [self.__set_process_affinity_mask, self.__set_process_affinity_mask_arguments],
+            'SetProcessDEPPolicy': [self.__set_process_DEP_policy, self.__set_process_DEP_policy_arguments],
+            'SetProcessWorkingSetSize': [self.__set_process_working_set_size, self.__set_process_working_set_size_arguments],
+            'SetSearchPathMode': [self.__set_search_path_mode, self.__set_search_path_mode_arguments],
+            'SetSystemPowerState': [self.__set_system_power_state, self.__set_system_power_state_arguments],
+            'SetTapeParameters': [self.__set_tape_parameters, self.__set_tape_parameters_arguments],
+            'SetTapePosition': [self.__set_tape_position, self.__set_tape_position_arguments],
+            'SetThreadAffinityMask': [self.__set_thread_affinity_mask, self.__set_thread_affinity_mask_arguments],
+            'SetThreadExecutionState': [self.__set_thread_execution_state, self.__set_thread_execution_state_arguments],
+            'SetThreadpoolCallbackCleanupGroup': [self.__set_threadpool_callback_cleanup_group, self.__set_threadpool_callback_cleanup_group_arguments],
+            'SetThreadpoolCallbackLibrary': [self.__set_threadpool_callback_library, self.__set_threadpool_callback_library_arguments],
+            'SetThreadpoolCallbackPersistent': [self.__set_threadpool_callback_persistent, self.__set_threadpool_callback_persistent_arguments],
+            'SetThreadpoolCallbackPool': [self.__set_threadpool_callback_pool, self.__set_threadpool_callback_pool_arguments],
+            'SetThreadpoolCallbackPriority': [self.__set_threadpool_callback_priority, self.__set_threadpool_callback_priority_arguments],
+            'SetThreadpoolCallbackRunsLong': [self.__set_threadpool_callback_runs_long, self.__set_threadpool_callback_runs_long_arguments],
+            'SetUmsThreadInformation': [self.__set_ums_thread_information, self.__set_ums_thread_information_arguments],
+            'SetupComm': [self.__setup_comm, self.__setup_comm_arguments],
+            'SetVolumeLabelA': [self.__set_volume_label_A, self.__set_volume_label_A_arguments],
+            'SetVolumeLabelW': [self.__set_volume_label_A, self.__set_volume_label_A_arguments],
+            'SetVolumeMountPointA': [self.__set_volume_mount_point_A, self.__set_volume_mount_point_A_arguments],
+            'SetVolumeMountPointW': [self.__set_volume_mount_point_A, self.__set_volume_mount_point_A_arguments],
+            'SetXStateFeaturesMask': [self.__set_X_state_features_mask, self.__set_X_state_features_mask_arguments],
+            'SwitchToFiber': [self.__switch_to_fiber, self.__switch_to_fiber_arguments],
+            'TransmitCommChar': [self.__transmit_comm_char, self.__transmit_comm_char_arguments],
+            'UmsThreadYield': [self.__ums_thread_yield, self.__ums_thread_yield_arguments],
+            'UnregisterApplicationRecoveryCallback': [self.__unregister_application_recovery_callback, self.__unregister_application_recovery_callback_arguments],
+            'UnregisterApplicationRestart': [self.__unregister_application_restart, self.__unregister_application_restart_arguments],
+            'UnregisterWait': [self.__unregister_wait, self.__unregister_wait_arguments],
+            'UpdateResourceA': [self.__update_resource_A, self.__update_resource_A_arguments],
+            'UpdateResourceW': [self.__update_resource_A, self.__update_resource_A_arguments],
+            'VerifyVersionInfoA': [self.__verify_version_info_A, self.__verify_version_info_A_arguments],
+            'VerifyVersionInfoW': [self.__verify_version_info_A, self.__verify_version_info_A_arguments],
+            'WaitCommEvent': [self.__wait_comm_event, self.__wait_comm_event_arguments],
+            'WaitNamedPipeA': [self.__wait_named_pipe_A, self.__wait_named_pipe_A_arguments],
+            'WinExec': [self.__win_exec, self.__win_exec_arguments],
+            'WinMain': [self.__win_main, self.__win_main_arguments],
+            'Wow64EnableWow64FsRedirection': [self.__wow64_enable_wow64_fs_redirection, self.__wow64_enable_wow64_fs_redirection_arguments],
+            'Wow64GetThreadContext': [self.__wow64_get_thread_context, self.__wow64_get_thread_context_arguments],
+            'Wow64GetThreadSelectorEntry': [self.__wow64_get_thread_selector_entry, self.__wow64_get_thread_selector_entry_arguments],
+            'Wow64SetThreadContext': [self.__wow64_set_thread_context, self.__wow64_set_thread_context_arguments],
+            'Wow64SuspendThread': [self.__wow64_suspend_thread, self.__wow64_suspend_thread_arguments],
+            'WriteEncryptedFileRaw': [self.__write_encrypted_file_raw, self.__write_encrypted_file_raw_arguments],
+            'WritePrivateProfileSectionA': [self.__write_private_profile_section_A, self.__write_private_profile_section_A_arguments],
+            'WritePrivateProfileSectionW': [self.__write_private_profile_section_A, self.__write_private_profile_section_A_arguments],
+            'WritePrivateProfileStringA': [self.__write_private_profile_string_A, self.__write_private_profile_string_A_arguments],
+            'WritePrivateProfileStringW': [self.__write_private_profile_string_A, self.__write_private_profile_string_A_arguments],
+            'WritePrivateProfileStructA': [self.__write_private_profile_struct_A, self.__write_private_profile_struct_A_arguments],
+            'WritePrivateProfileStructW': [self.__write_private_profile_struct_A, self.__write_private_profile_struct_A_arguments],
+            'WriteProfileSectionA': [self.__write_profile_section_A, self.__write_profile_section_A_arguments],
+            'WriteProfileSectionW': [self.__write_profile_section_A, self.__write_profile_section_A_arguments],
+            'WriteProfileStringA': [self.__write_profile_string_A, self.__write_profile_string_A_arguments],
+            'WriteProfileStringW': [self.__write_profile_string_A, self.__write_profile_string_A_arguments],
+            'WriteTapemark': [self.__write_tapemark, self.__write_tapemark_arguments],
+            'WTSGetActiveConsoleSessionId': [self.__WTS_get_active_console_session_id, self.__WTS_get_active_console_session_id_arguments],
+            'ZombifyActCtx': [self.__zombify_act_ctx, self.__zombify_act_ctx_arguments],
         })
 
     __access_check_and_audit_alarm_A_arguments = [
@@ -3482,4 +3582,784 @@ class WinBase(ApiBase):
             FunctionResult(data, FunctionResult.BYTES, target=umsThreadInformation),
             FunctionResult(len(data), FunctionResult.NUMBER, target=returnLength)
         ])
-        
+
+    __read_directory_changes_ex_W_arguments = [
+        FunctionArgument('hDirectory', FunctionArgument.ADDRESS),
+        FunctionArgument('lpBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('nBufferLength', FunctionArgument.NUMBER),
+        FunctionArgument('bWatchSubtree', FunctionArgument.NUMBER),
+        FunctionArgument('dwNotifyFilter', FunctionArgument.NUMBER),
+        FunctionArgument('lpBytesReturned', FunctionArgument.ADDRESS),
+        FunctionArgument('lpOverlapped', FunctionArgument.ADDRESS),
+        FunctionArgument('lpCompletionRoutine', FunctionArgument.ADDRESS),
+        FunctionArgument('readDirectoryNotifyInformationClass', FunctionArgument.NUMBER)
+    ]
+
+    def __read_directory_changes_ex_W(self, hDirectory, lpBuffer, nBufferLength, bWatchSubtree, dwNotifyFilter, lpBytesReturned, lpOverlapped, lpCompletionRoutine, readDirectoryNotifyInformationClass):
+        data = b'some directory changes made\x00'[:nBufferLength] # fake data
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=lpBuffer),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=lpBytesReturned)
+        ])
+
+    __ReadDirectoryChangesW_arguments = [
+        FunctionArgument('hDirectory', FunctionArgument.ADDRESS),
+        FunctionArgument('lpBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('nBufferLength', FunctionArgument.NUMBER),
+        FunctionArgument('bWatchSubtree', FunctionArgument.NUMBER),
+        FunctionArgument('dwNotifyFilter', FunctionArgument.NUMBER),
+        FunctionArgument('lpBytesReturned', FunctionArgument.ADDRESS),
+        FunctionArgument('lpOverlapped', FunctionArgument.ADDRESS),
+        FunctionArgument('lpCompletionRoutine', FunctionArgument.ADDRESS),
+    ]
+
+    def __read_directory_changes_W(self, hDirectory, lpBuffer, nBufferLength, bWatchSubtree, dwNotifyFilter, lpBytesReturned, lpOverlapped, lpCompletionRoutine):
+        data = b'some directory changes made\x00'[:nBufferLength] # fake data
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data, FunctionResult.BYTES, target=lpBuffer),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=lpBytesReturned)
+        ])
+
+    __read_encrypted_file_raw_arguments = [
+        FunctionArgument('pfExportCallback', FunctionArgument.ADDRESS),
+        FunctionArgument('pvCallbackContext', FunctionArgument.ADDRESS),
+        FunctionArgument('pvContext', FunctionArgument.ADDRESS)
+    ]
+
+    def __read_encrypted_file_raw(self, pfExportCallback, pvCallbackContext, pvContext):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __read_event_log_A_arguments = [
+        FunctionArgument('hEventLog', FunctionArgument.ADDRESS),
+        FunctionArgument('dwReadFlags', FunctionArgument.NUMBER),
+        FunctionArgument('dwRecordOffset', FunctionArgument.NUMBER),
+        FunctionArgument('lpBuffer', FunctionArgument.ADDRESS),
+        FunctionArgument('nNumberOfBytesToRead', FunctionArgument.NUMBER),
+        FunctionArgument('pnBytesRead', FunctionArgument.ADDRESS),
+        FunctionArgument('pnMinNumberOfBytesNeeded', FunctionArgument.ADDRESS)
+    ]
+
+    def __read_event_log_A(self, hEventLog, dwReadFlags, dwRecordOffset, lpBuffer, nNumberOfBytesToRead, pnBytesRead, pnMinNumberOfBytesNeeded):
+        data = b'some_event_log_data\x00' # fake event log data; should be EVENTLOGRECORD structures
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(data[:nNumberOfBytesToRead], FunctionResult.BYTES, target=lpBuffer),
+            FunctionResult(min(len(data), nNumberOfBytesToRead), FunctionResult.NUMBER, target=pnBytesRead),
+            FunctionResult(len(data), FunctionResult.NUMBER, target=pnMinNumberOfBytesNeeded)
+        ])
+
+    __read_thread_profiling_data_arguments = [
+        FunctionArgument('performanceDataHandle', FunctionArgument.ADDRESS),
+        FunctionArgument('flags', FunctionArgument.NUMBER),
+        FunctionArgument('performanceData', FunctionArgument.ADDRESS)
+    ]
+
+    def __read_thread_profiling_data(self, performanceDataHandle, flags, performanceData):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __register_application_recovery_callback_arguments = [
+        FunctionArgument('pRecoveyCallback', FunctionArgument.ADDRESS),
+        FunctionArgument('pvParameter', FunctionArgument.ADDRESS),
+        FunctionArgument('dwPingInterval', FunctionArgument.NUMBER),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __register_application_recovery_callback(self, pRecoveyCallback, pvParameter, dwPingInterval, dwFlags):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __register_application_restart_arguments = [
+        FunctionArgument('pwzCommandline', FunctionArgument.STRING),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __register_application_restart(self, pwzCommandline, dwFlags):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __register_event_source_A_arguments = [
+        FunctionArgument('lpUNCServerName', FunctionArgument.STRING),
+        FunctionArgument('lpSourceName', FunctionArgument.STRING)
+    ]
+
+    def __register_event_source_A(self, lpUNCServerName, lpSourceName):
+        return self._wrap_results(self._new_address_result())
+
+    __register_wait_for_single_object_arguments = [
+        FunctionArgument('phNewWaitObject', FunctionArgument.ADDRESS),
+        FunctionArgument('hObject', FunctionArgument.ADDRESS),
+        FunctionArgument('callback', FunctionArgument.ADDRESS),
+        FunctionArgument('context', FunctionArgument.ADDRESS),
+        FunctionArgument('dwMilliseconds', FunctionArgument.NUMBER),
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __register_wait_for_single_object(self, phNewWaitObject, hObject, callback, context, dwMilliseconds, dwFlags):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            self._new_address_result(target=phNewWaitObject)
+        ])
+
+    __release_act_ctx_arguments = [
+        FunctionArgument('hActCtx', FunctionArgument.ADDRESS)
+    ]
+
+    def __release_act_ctx(self, hActCtx):
+        return self._wrap_results(None)
+
+    __remove_directory_transacted_A_arguments = [
+        FunctionArgument('lpPathName', FunctionArgument.STRING),
+        FunctionArgument('hTransaction', FunctionArgument.ADDRESS)
+    ]
+
+    def __remove_directory_transacted_A(self, lpPathName, hTransaction):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __remove_secure_memory_cache_callback_arguments = [
+        FunctionArgument('pfnCallBack', FunctionArgument.ADDRESS)
+    ]
+
+    def __remove_secure_memory_cache_callback(self, pfnCallBack):
+        return self._wrap_results(self._true_result())
+
+    __re_open_file_arguments = [
+        FunctionArgument('hOriginalFile', FunctionArgument.ADDRESS),
+        FunctionArgument('dwDesiredAccess', FunctionArgument.NUMBER),
+        FunctionArgument('dwShareMode', FunctionArgument.NUMBER),
+        FunctionArgument('dwFlagsAndAttributes', FunctionArgument.NUMBER)
+    ]
+
+    def __re_open_file(self, hOriginalFile, dwDesiredAccess, dwShareMode, dwFlagsAndAttributes):
+        return self._wrap_results(self._new_address_result())
+
+    __replace_file_A_arguments = [
+        FunctionArgument('lpReplacedFileName', FunctionArgument.STRING),
+        FunctionArgument('lpReplacementFileName', FunctionArgument.STRING),
+        FunctionArgument('lpBackupFileName', FunctionArgument.STRING),
+        FunctionArgument('dwReplaceFlags', FunctionArgument.NUMBER),
+        FunctionArgument('lpExclude', FunctionArgument.ADDRESS),
+        FunctionArgument('lpReserved', FunctionArgument.ADDRESS)
+    ]
+
+    def __replace_file_A(self, lpReplacedFileName, lpReplacementFileName, lpBackupFileName, dwReplaceFlags, lpExclude, lpReserved):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __report_event_A_arguments = [
+        FunctionArgument('hEventLog', FunctionArgument.ADDRESS),
+        FunctionArgument('wType', FunctionArgument.NUMBER),
+        FunctionArgument('wCategory', FunctionArgument.NUMBER),
+        FunctionArgument('dwEventID', FunctionArgument.NUMBER),
+        FunctionArgument('lpUserSid', FunctionArgument.ADDRESS),
+        FunctionArgument('wNumStrings', FunctionArgument.NUMBER),
+        FunctionArgument('dwDataSize', FunctionArgument.NUMBER),
+        FunctionArgument('lpStrings', FunctionArgument.ADDRESS),
+        FunctionArgument('lpRawData', FunctionArgument.ADDRESS)
+    ]
+
+    def __report_event_A(self, hEventLog, wType, wCategory, dwEventID, lpUserSid, wNumStrings, dwDataSize, lpStrings, lpRawData):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __request_wakeup_latency_arguments = [
+        FunctionArgument('latency', FunctionArgument.NUMBER)
+    ]
+
+    def __request_wakeup_latency(self, latency):
+        result = FunctionResult(10, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_comm_break_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_comm_break(self, hFile):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_comm_config_arguments = [
+        FunctionArgument('hCommDev', FunctionArgument.ADDRESS),
+        FunctionArgument('lpCC', FunctionArgument.ADDRESS),
+        FunctionArgument('dwSize', FunctionArgument.NUMBER)
+    ]
+
+    def __set_comm_config(self, hCommDev, lpCC, dwSize):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_comm_mask_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('dwEvtMask', FunctionArgument.NUMBER)
+    ]
+
+    def __set_comm_mask(self, hFile, dwEvtMask):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_comm_state_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('lpDCB', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_comm_state(self, hFile, lpDCB):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_comm_timeouts_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('lpCommTimeouts', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_comm_timeouts(self, hFile, lpCommTimeouts):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_current_directory_arguments = [
+        FunctionArgument('lpPathName', FunctionArgument.STRING)
+    ]
+
+    def __set_current_directory(self, lpPathName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_default_comm_config_A_arguments = [
+        FunctionArgument('lpszName', FunctionArgument.STRING),
+        FunctionArgument('lpCC', FunctionArgument.ADDRESS),
+        FunctionArgument('dwSize', FunctionArgument.NUMBER)
+    ]
+
+    def __set_default_comm_config_A(self, lpszName, lpCC, dwSize):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_dll_directory_A_arguments = [
+        FunctionArgument('lpPathName', FunctionArgument.STRING)
+    ]
+
+    def __set_dll_directory_A(self, lpPathName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_environment_variable_arguments = [
+        FunctionArgument('lpName', FunctionArgument.STRING),
+        FunctionArgument('lpValue', FunctionArgument.STRING)
+    ]
+
+    def __set_environment_variable(self, lpName, lpValue):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_file_attributes_transacted_A_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('dwFileAttributes', FunctionArgument.NUMBER),
+        FunctionArgument('hTransaction', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_file_attributes_transacted_A(self, lpFileName, dwFileAttributes, hTransaction):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_file_bandwidth_reservation_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('nPeriodMilliseconds', FunctionArgument.NUMBER),
+        FunctionArgument('nBytesPerPeriod', FunctionArgument.NUMBER),
+        FunctionArgument('bDiscardable', FunctionArgument.NUMBER),
+        FunctionArgument('lpTransferSize', FunctionArgument.ADDRESS),
+        FunctionArgument('lpNumOutstandingRequests', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_file_bandwidth_reservation(self, hFile, nPeriodMilliseconds, nBytesPerPeriod, bDiscardable, lpTransferSize, lpNumOutstandingRequests):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            FunctionResult(576, FunctionResult.NUMBER, target=lpTransferSize),
+            FunctionResult(100, FunctionResult.NUMBER, target=lpNumOutstandingRequests)
+        ])
+
+    __set_file_completion_notification_modes_arguments = [
+        FunctionArgument('fileHandle', FunctionArgument.ADDRESS),
+        FunctionArgument('flags', FunctionArgument.NUMBER)
+    ]
+
+    def __set_file_completion_notification_modes(self, fileHandle, flags):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_file_security_A_arguments = [
+        FunctionArgument('lpFileName', FunctionArgument.STRING),
+        FunctionArgument('securityInformation', FunctionArgument.ADDRESS),
+        FunctionArgument('pSecurityDescriptor', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_file_security_A(self, lpFileName, securityInformation, pSecurityDescriptor):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_file_short_name_A_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('lpShortName', FunctionArgument.STRING)
+    ]
+
+    def __set_file_short_name_A(self, hFile, lpShortName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_firmware_environment_variable_A_arguments = [
+        FunctionArgument('lpName', FunctionArgument.STRING),
+        FunctionArgument('lpGuid', FunctionArgument.STRING),
+        FunctionArgument('pValue', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER)
+    ]
+
+    def __set_firmware_environment_variable_A(self, lpName, lpGuid, pValue, nSize):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_firmware_environment_variable_ex_A_arguments = [
+        FunctionArgument('lpName', FunctionArgument.STRING),
+        FunctionArgument('lpGuid', FunctionArgument.STRING),
+        FunctionArgument('pValue', FunctionArgument.ADDRESS),
+        FunctionArgument('nSize', FunctionArgument.NUMBER),
+        FunctionArgument('dwAttributes', FunctionArgument.NUMBER)
+    ]
+
+    def __set_firmware_environment_variable_ex_A(self, lpName, lpGuid, pValue, nSize, dwAttributes):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_handle_count_arguments = [
+        FunctionArgument('uNumber', FunctionArgument.NUMBER)
+    ]
+
+    def __set_handle_count(self, uNumber):
+        result = FunctionResult(uNumber, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_mailslot_info_arguments = [
+        FunctionArgument('hMailslot', FunctionArgument.ADDRESS),
+        FunctionArgument('lReadTimeout', FunctionArgument.NUMBER)
+    ]
+
+    def __set_mailslot_info(self, hMailslot, lReadTimeout):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_process_affinity_mask_arguments = [
+        FunctionArgument('hProcess', FunctionArgument.ADDRESS),
+        FunctionArgument('dwProcessAffinityMask', FunctionArgument.NUMBER)
+    ]
+
+    def __set_process_affinity_mask(self, hProcess, dwProcessAffinityMask):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_process_DEP_policy_arguments = [
+        FunctionArgument('dwFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __set_process_DEP_policy(self, dwFlags):
+        return self._wrap_results(self._true_result())
+
+    __set_process_working_set_size_arguments = [
+        FunctionArgument('hProcess', FunctionArgument.ADDRESS),
+        FunctionArgument('dwMinimumWorkingSetSize', FunctionArgument.NUMBER),
+        FunctionArgument('dwMaximumWorkingSetSize', FunctionArgument.NUMBER)
+    ]
+
+    def __set_process_working_set_size(self, hProcess, dwMinimumWorkingSetSize, dwMaximumWorkingSetSize):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_search_path_mode_arguments = [
+        FunctionArgument('flags', FunctionArgument.NUMBER)
+    ]
+
+    def __set_search_path_mode(self, flags):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_system_power_state_arguments = [
+        FunctionArgument('fSuspend', FunctionArgument.NUMBER),
+        FunctionArgument('fForce', FunctionArgument.NUMBER)
+    ]
+
+    def __set_system_power_state(self, fSuspend, fForce):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_tape_parameters_arguments = [
+        FunctionArgument('hDevice', FunctionArgument.ADDRESS),
+        FunctionArgument('dwOperation', FunctionArgument.NUMBER),
+        FunctionArgument('lpTapeInformation', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_tape_parameters(self, hDevice, dwOperation, lpTapeInformation):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_tape_position_arguments = [
+        FunctionArgument('hDevice', FunctionArgument.ADDRESS),
+        FunctionArgument('dwPositionMethod', FunctionArgument.NUMBER),
+        FunctionArgument('dwPartition', FunctionArgument.NUMBER),
+        FunctionArgument('dwOffsetLow', FunctionArgument.NUMBER),
+        FunctionArgument('dwOffsetHigh', FunctionArgument.NUMBER),
+        FunctionArgument('bImmediate', FunctionArgument.NUMBER)
+    ]
+
+    def __set_tape_position(self, hDevice, dwPositionMethod, dwPartition, dwOffsetLow, dwOffsetHigh, bImmediate):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_thread_affinity_mask_arguments = [
+        FunctionArgument('hThread', FunctionArgument.ADDRESS),
+        FunctionArgument('dwThreadAffinityMask', FunctionArgument.NUMBER)
+    ]
+
+    def __set_thread_affinity_mask(self, hThread, dwThreadAffinityMask):
+        result = FunctionResult(int('0x11111111', 16), FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_thread_execution_state_arguments = [
+        FunctionArgument('esFlags', FunctionArgument.NUMBER)
+    ]
+
+    def __set_thread_execution_state(self, esFlags):
+        result = FunctionResult(int('0x80000000', 16), FunctionResult.NUMBER) # fake ES_CONTINUOUS state
+        return self._wrap_results(result)
+
+    __set_threadpool_callback_cleanup_group_arguments = [
+        FunctionArgument('pcbe', FunctionArgument.ADDRESS),
+        FunctionArgument('ptpcg', FunctionArgument.ADDRESS),
+        FunctionArgument('pfng', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_threadpool_callback_cleanup_group(self, pcbe, ptpcg, pfng):
+        return self._wrap_results(None)
+
+    __set_threadpool_callback_library_arguments = [
+        FunctionArgument('pcbe', FunctionArgument.ADDRESS),
+        FunctionArgument('mod', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_threadpool_callback_library(self, pcbe, mod):
+        return self._wrap_results(None)
+
+    __set_threadpool_callback_persistent_arguments = [
+        FunctionArgument('pcbe', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_threadpool_callback_persistent(self, pcbe):
+        return self._wrap_results(None)
+
+    __set_threadpool_callback_pool_arguments = [
+        FunctionArgument('pcbe', FunctionArgument.ADDRESS),
+        FunctionArgument('ptpp', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_threadpool_callback_pool(self, pcbe, ptpp):
+        return self._wrap_results(None)
+
+    __set_threadpool_callback_priority_arguments = [
+        FunctionArgument('pcbe', FunctionArgument.ADDRESS),
+        FunctionArgument('priority', FunctionArgument.NUMBER)
+    ]
+
+    def __set_threadpool_callback_priority(self, pcbe, priority):
+        return self._wrap_results(None)
+
+    __set_threadpool_callback_runs_long_arguments = [
+        FunctionArgument('pcbe', FunctionArgument.ADDRESS)
+    ]
+
+    def __set_threadpool_callback_runs_long(self, pcbe):
+        return self._wrap_results(None)
+
+    __set_ums_thread_information_arguments = [
+        FunctionArgument('umsThread', FunctionArgument.ADDRESS),
+        FunctionArgument('umsThreadInfoClass', FunctionArgument.NUMBER),
+        FunctionArgument('umsThreadInformation', FunctionArgument.ADDRESS),
+        FunctionArgument('umsThreadInformationLength', FunctionArgument.NUMBER)
+    ]
+
+    def __set_ums_thread_information(self, umsThread, umsThreadInfoClass, umsThreadInformation, umsThreadInformationLength):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __setup_comm_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('dwInQueue', FunctionArgument.NUMBER),
+        FunctionArgument('dwOutQueue', FunctionArgument.NUMBER)
+    ]
+
+    def __setup_comm(self, hFile, dwInQueue, dwOutQueue):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_volume_label_A_arguments = [
+        FunctionArgument('lpRootPathName', FunctionArgument.STRING),
+        FunctionArgument('lpVolumeName', FunctionArgument.STRING)
+    ]
+
+    def __set_volume_label_A(self, lpRootPathName, lpVolumeName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_volume_mount_point_A_arguments = [
+        FunctionArgument('lpszVolumeMountPoint', FunctionArgument.STRING),
+        FunctionArgument('lpszVolumeName', FunctionArgument.STRING)
+    ]
+
+    def __set_volume_mount_point_A(self, lpszVolumeMountPoint, lpszVolumeName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __set_X_state_features_mask_arguments = [
+        FunctionArgument('context', FunctionArgument.ADDRESS),
+        FunctionArgument('featureMask', FunctionArgument.NUMBER)
+    ]
+
+    def __set_X_state_features_mask(self, context, featureMask):
+        return self._wrap_results(self._true_result())
+
+    __switch_to_fiber_arguments = [
+        FunctionArgument('lpFiber', FunctionArgument.ADDRESS)
+    ]
+
+    def __switch_to_fiber(self, lpFiber):
+        return self._wrap_results(None)
+
+    __transmit_comm_char_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('cChar', FunctionArgument.NUMBER)
+    ]
+
+    def __transmit_comm_char(self, hFile, cChar):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __ums_thread_yield_arguments = [
+        FunctionArgument('schedulerParam', FunctionArgument.ADDRESS)
+    ]
+
+    def __ums_thread_yield(self, schedulerParam):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __unregister_application_recovery_callback_arguments = []
+
+    def __unregister_application_recovery_callback(self):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __unregister_application_restart_arguments = []
+
+    def __unregister_application_restart(self):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __unregister_wait_arguments = [
+        FunctionArgument('waitHandle', FunctionArgument.ADDRESS)
+    ]
+
+    def __unregister_wait(self, waitHandle):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __update_resource_A_arguments = [
+        FunctionArgument('hUpdate', FunctionArgument.ADDRESS),
+        FunctionArgument('lpType', FunctionArgument.NUMBER),
+        FunctionArgument('lpName', FunctionArgument.STRING),
+        FunctionArgument('wLanguage', FunctionArgument.NUMBER),
+        FunctionArgument('lpData', FunctionArgument.ADDRESS),
+        FunctionArgument('cb', FunctionArgument.NUMBER)
+    ]
+
+    def __update_resource_A(self, hUpdate, lpType, lpName, wLanguage, lpData, cb):
+        return self._wrap_results(self._true_result())
+
+    __verify_version_info_A_arguments = [
+        FunctionArgument('lpVersionInformation', FunctionArgument.ADDRESS),
+        FunctionArgument('dwTypeMask', FunctionArgument.NUMBER),
+        FunctionArgument('dwlConditionMask', FunctionArgument.NUMBER)
+    ]
+
+    def __verify_version_info_A(self, lpVersionInformation, dwTypeMask, dwlConditionMask):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __wait_comm_event_arguments = [
+        FunctionArgument('hFile', FunctionArgument.ADDRESS),
+        FunctionArgument('lpEvtMask', FunctionArgument.ADDRESS),
+        FunctionArgument('lpOverlapped', FunctionArgument.ADDRESS)
+    ]
+
+    def __wait_comm_event(self, hFile, lpEvtMask, lpOverlapped):
+        return self._wrap_results([
+            FunctionResult(1, FunctionArgument.NUMBER),
+            FunctionResult(int('0x0004', 16), FunctionResult.NUMBER, target=lpOverlapped) # fake last character sent
+        ])
+
+    __wait_named_pipe_A_arguments = [
+        FunctionArgument('lpNamedPipeName', FunctionArgument.STRING),
+        FunctionArgument('nTimeOut', FunctionArgument.NUMBER)
+    ]
+
+    def __wait_named_pipe_A(self, lpNamedPipeName, nTimeOut):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __win_exec_arguments = [
+        FunctionArgument('lpCmdLine', FunctionArgument.STRING),
+        FunctionArgument('uCmdShow', FunctionArgument.NUMBER)
+    ]
+
+    def __win_exec(self, lpCmdLine, uCmdShow):
+        result = FunctionResult(32, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __win_main_arguments = [
+        FunctionArgument('hInstance', FunctionArgument.ADDRESS),
+        FunctionArgument('hPrevInstance', FunctionArgument.ADDRESS),
+        FunctionArgument('lpCmdLine', FunctionArgument.STRING),
+        FunctionArgument('nShowCmd', FunctionArgument.NUMBER)
+    ]
+
+    def __win_main(self, hInstance, hPrevInstance, lpCmdLine, nShowCmd):
+        result = FunctionResult(int('0x0012', 16), FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __wow64_enable_wow64_fs_redirection_arguments = [
+        FunctionArgument('wow64FsEnableRedirection', FunctionArgument.NUMBER)
+    ]
+
+    def __wow64_enable_wow64_fs_redirection(self, wow64FsEnableRedirection):
+        return self._wrap_results(self._true_result())
+
+    __wow64_get_thread_context_arguments = [
+        FunctionArgument('hThread', FunctionArgument.ADDRESS),
+        FunctionArgument('lpContext', FunctionArgument.ADDRESS)
+    ]
+
+    def __wow64_get_thread_context(self, hThread, lpContext):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __wow64_get_thread_selector_entry_arguments = [
+        FunctionArgument('hThread', FunctionArgument.ADDRESS),
+        FunctionArgument('dwSelector', FunctionArgument.NUMBER),
+        FunctionArgument('lpSelectorEntry', FunctionArgument.ADDRESS)
+    ]
+
+    def __wow64_get_thread_selector_entry(self, hThread, dwSelector, lpSelectorEntry):
+        return self._wrap_results([
+            FunctionResult(1, FunctionResult.NUMBER),
+            self._new_address_result(target=lpSelectorEntry)
+        ])
+
+    __wow64_set_thread_context_arguments = [
+        FunctionArgument('hThread', FunctionArgument.ADDRESS),
+        FunctionArgument('lpContext', FunctionArgument.ADDRESS)
+    ]
+
+    def __wow64_set_thread_context(self, hThread, lpContext):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __wow64_suspend_thread_arguments = [
+        FunctionArgument('hThread', FunctionArgument.ADDRESS)
+    ]
+
+    def __wow64_suspend_thread(self, hThread):
+        result = FunctionResult(100, FunctionResult.NUMBER) # fake previous suspend count
+        return self._wrap_results(result)
+
+    __write_encrypted_file_raw_arguments = [
+        FunctionArgument('pfImportCallback', FunctionArgument.ADDRESS),
+        FunctionArgument('pvCallbackContext', FunctionArgument.ADDRESS),
+        FunctionArgument('pvContext', FunctionArgument.ADDRESS)
+    ]
+
+    def __write_encrypted_file_raw(self, pfImportCallback, pvCallbackContext, pvContext):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __write_private_profile_section_A_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpString', FunctionArgument.STRING),
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __write_private_profile_section_A(self, lpAppName, lpString, lpFileName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __write_private_profile_string_A_arguments= [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpKeyName', FunctionArgument.STRING),
+        FunctionArgument('lpString', FunctionArgument.STRING),
+        FunctionArgument('lpFileName', FunctionArgument.STRING)
+    ]
+
+    def __write_private_profile_string_A(self, lpAppName, lpKeyName, lpString, lpFileName):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __write_private_profile_struct_A_arguments = [
+        FunctionArgument('lpszSection', FunctionArgument.STRING),
+        FunctionArgument('lpszKey', FunctionArgument.STRING),
+        FunctionArgument('lpStruct', FunctionArgument.ADDRESS),
+        FunctionArgument('uSizeStruct', FunctionArgument.NUMBER),
+        FunctionArgument('szFile', FunctionArgument.STRING)
+    ]
+
+    def __write_private_profile_struct_A(self, lpszSection, lpszKey, lpStruct, uSizeStruct, szFile):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __write_profile_section_A_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpString', FunctionArgument.STRING)
+    ]
+
+    def __write_profile_section_A(self, lpAppName, lpString):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __write_profile_string_A_arguments = [
+        FunctionArgument('lpAppName', FunctionArgument.STRING),
+        FunctionArgument('lpKeyName', FunctionArgument.STRING),
+        FunctionArgument('lpString', FunctionArgument.STRING)
+    ]
+
+    def __write_profile_string_A(self, lpAppName, lpKeyName, lpString):
+        result = FunctionResult(1, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __write_tapemark_arguments = [
+        FunctionArgument('hDevice', FunctionArgument.ADDRESS),
+        FunctionArgument('dwTapemarkType', FunctionArgument.NUMBER),
+        FunctionArgument('dwTapemarkCount', FunctionArgument.NUMBER),
+        FunctionArgument('bImmediate', FunctionArgument.NUMBER)
+    ]
+
+    def __write_tapemark(self, hDevice, dwTapemarkType, dwTapemarkCount, bImmediate):
+        result = FunctionResult(0, FunctionResult.NUMBER)
+        return self._wrap_results(result)
+
+    __WTS_get_active_console_session_id_arguments = []
+
+    def __WTS_get_active_console_session_id(self):
+        result = FunctionResult(3, FunctionResult.NUMBER) # fake session id
+        return self._wrap_results(result)
+
+    __zombify_act_ctx_arguments = [
+        FunctionArgument('hActCtx', FunctionArgument.ADDRESS)
+    ]
+
+    def __zombify_act_ctx(self, hActCtx):
+        return self._wrap_results(self._true_result())
+    
