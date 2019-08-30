@@ -9,6 +9,9 @@ class FunctionArgument:
 		self.typed = typed
 		self.value = value
 
+	def __str__(self):
+		return f'{self.name}={self.value} [{self.typed}]'
+
 class FunctionResult:
 	BYTES = 'bytes'
 	NUMBER = 'number'
@@ -18,3 +21,6 @@ class FunctionResult:
 		self.typed = typed
 		self.value = value
 		self.to_reference = to_reference
+
+	def __str__(self):
+		return f'{self.target}={self.value} [{self.typed}]'

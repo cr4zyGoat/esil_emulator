@@ -1,14 +1,27 @@
+import utilities as util
+
 class Instruction:
     def __init__(self, content):
         self.address = content.get('offset', '')
         self.esil = content.get('esil', '')
         self.asm = content.get('disasm', '')
 
+        self.__operation = self.asm.split()[0] if self.asm else None
+
     def get_operation(self):
-        return self.asm.split()[0] if self.asm else None
+        return self.__operation
 
     def get_params(self):
         return self.asm.split()[1:]
+
+    def is_call(self):
+        return self.get_operation() == 'call'
+
+    def is_return(self):
+        return self.get_operation() == 'ret'
+
+    def is_comparison(self):
+        return util.is_comparison(self.get_operation())
 
 class Relocation:
     def __init__(self, content):

@@ -5,13 +5,14 @@ from api.parameters import *
 import utilities as util
 
 class Emulator:
-    def __init__(self, file, memory, api):
+    def __init__(self, file, memory, api, output):
         self.__rel_table = None
         self.__instruction = None
         self.__last_instruction = None
         self.__r2 = r2pipe.open(file)
         self.__memory_stack = memory
         self.__api = api
+        self.__output = output
 
         self.__set_environment()
         self.__set_relocations_table()
@@ -66,28 +67,28 @@ class Emulator:
         if self.__rel_table.contains_vaddr(address):
             function = self.__rel_table.get_relocation(address).get_function_name()
             self.__emulate_function(function)
-            self.__execute_return()
-            print(f"\treturn to @{self.__get_register('eip')}")
         else:
             self.__r2.cmd('aes')
-        if self.__instruction.get_operation() == 'call':
-            print('{ci.asm}: from address @{ci.address} to @{ca}'
-                .format(ci=self.__instruction, ca=self.__get_register('eip')))
+
+    def __inform_step(self):
+        params = self.__instruction.get_params()
+        if self.__instruction.is_call():
+            self.__output.write_call(params)
+        elif self.__instruction.is_return():
+            self.__output.write_return()
 
     def __emulate_function(self, function_name):
-        print(f'emulating function {function_name}:')
+        arguments, results = [], []
         if self.__api.contains_function(function_name):
             arguments = self.__api.get_function_arguments(function_name)
             arguments = self.__fill_function_arguments(arguments)
-            print('\targuments:')
-            for arg in arguments: print(f'\t\t{arg.name} = {arg.value} ({arg.typed})')
             results = self.__api.emulate_function(function_name, arguments)
             self.__apply_function_results(results)
-        else:
-            print(f'\tfunction {function_name} not defined')
+        self.__output.write_reallocated_call(function_name, arguments)
+        self.__execute_return()
+        self.__output.write_return(results)
 
     def __apply_function_results(self, results):
-        print('\tresults:')
         for result in results:
             target, typed = result.target, result.typed
             if result.to_reference:
@@ -99,7 +100,6 @@ class Emulator:
                     self.__write_bytes(result.value, address)
                     result.value = address
                 typed = 'address'
-            print(f'\t\t{target} = {result.value} ({typed})')
             if util.is_address(target):
                 self.__write_bytes(result.value, target)
             else:
@@ -107,9 +107,6 @@ class Emulator:
 
     def __execute_return(self):
         self.__r2.cmd('ae esp,[4],eip,=,4,esp,+=')
-        self.__refresh_program_counter()
-
-    def __refresh_program_counter(self):
         eip = self.__get_register('eip')
         self.__r2.cmd('aepc '+eip)
 
@@ -131,4 +128,5 @@ class Emulator:
     def run(self):
         while self.__get_current_address() != self.__last_instruction.address:
             self.__step()
+            self.__inform_step()
             self.__get_instruction()
