@@ -15,6 +15,7 @@ class FunctionArgument:
 class FunctionResult:
 	BYTES = 'bytes'
 	NUMBER = 'number'
+	EXIT_PROCESS = 'exit_process'
 
 	def __init__(self, value, typed, target='eax', to_reference=False):
 		self.target = target

@@ -13,10 +13,10 @@ class Emulator:
         self.__memory_stack = memory
         self.__api = api
         self.__output = output
+        self.__emulation_finished = False
 
         self.__set_environment()
         self.__set_relocations_table()
-        self.__get_instruction()
         self.__get_last_instruction()
 
     def __set_environment(self):
@@ -25,7 +25,6 @@ class Emulator:
         self.__r2.cmd('e asm.esil=true')
         self.__r2.cmd('e io.cache=true')
         self.__r2.cmd('e esil.stack.depth=64')
-        self.__r2.cmd('s main')
         self.__r2.cmd('aei')
         self.__r2.cmd('aeim {m.address} {m.size}'.format(m=self.__memory_stack))
         self.__r2.cmd('aeip')
@@ -91,6 +90,9 @@ class Emulator:
     def __apply_function_results(self, results):
         for result in results:
             target, typed = result.target, result.typed
+            if typed == FunctionResult.EXIT_PROCESS:
+                self.__emulation_finished = True
+                continue
             if result.to_reference:
                 if typed == FunctionResult.NUMBER:
                     result.value = self.__memory_stack.malloc(result.value)
@@ -126,7 +128,9 @@ class Emulator:
         return arguments
 
     def run(self):
-        while self.__get_current_address() != self.__last_instruction.address:
+        while not self.__emulation_finished:
+            self.__get_instruction()
             self.__step()
             self.__inform_step()
-            self.__get_instruction()
+            if self.__get_current_address() == self.__last_instruction.address:
+                self.__emulation_finished = True
