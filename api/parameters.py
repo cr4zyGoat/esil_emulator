@@ -3,6 +3,7 @@ class FunctionArgument:
 	NUMBER = 'number'
 	ADDRESS = 'address'
 	POINTED_VALUE = 'pointed_value'
+	UNDEFINED = 'undefined'
 
 	def __init__(self, name, typed, value=None):
 		self.name = name

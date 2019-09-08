@@ -1,3 +1,4 @@
+import re
 import utilities as util
 
 class Instruction:
@@ -19,13 +20,16 @@ class Instruction:
         return self.type == 'invalid'
 
     def is_call(self):
-        return self.get_operation() == 'call'
+        return self.__operation == 'call'
 
     def is_return(self):
-        return self.get_operation() == 'ret'
+        return self.__operation == 'ret'
 
     def is_comparison(self):
-        return util.is_comparison(self.get_operation())
+        return util.is_comparison(self.__operation)
+
+    def is_pushing_arguments(self):
+        return self.__operation == 'push' or re.fullmatch('mov\\s.*\\[esp.*\\],.+', self.asm)
 
 class Relocation:
     def __init__(self, content):
@@ -35,7 +39,7 @@ class Relocation:
         self.paddr = content.get('paddr', '')
 
     def get_function_name(self):
-        return self.name.split('_')[-1]
+        return re.search('.+\\.dll_+([\\w_]+)', self.name).group(1) or self.name.split('_')[-1]
 
 class RelocationTable:
     def __init__(self, relocations):

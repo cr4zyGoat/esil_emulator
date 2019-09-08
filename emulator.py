@@ -6,14 +6,15 @@ import utilities as util
 
 class Emulator:
     def __init__(self, file, memory, api, output):
+        self.__args_stack = []
         self.__rel_table = None
         self.__instruction = None
         self.__last_instruction = None
+        self.__emulation_finished = False
         self.__r2 = r2pipe.open(file)
         self.__memory_stack = memory
         self.__api = api
         self.__output = output
-        self.__emulation_finished = False
 
         self.__set_environment()
         self.__set_relocations_table()
@@ -38,11 +39,11 @@ class Emulator:
         data = self.__r2.cmdj('pdfj')['ops'][-1]
         self.__last_instruction = emo.Instruction(data)
 
-    def __get_current_address(self):
-        return self.__instruction.address
-
     def __get_register(self, register):
         return self.__r2.cmd(f'aer {register}').strip()
+
+    def __get_current_address(self):
+        return self.__get_register('eip')
 
     def __set_register(self, register, value):
         if type(value) == bytes: value = value.hex()        
@@ -59,17 +60,23 @@ class Emulator:
         return self.__r2.cmd(f'ps @{address}').strip()
 
     def __step(self):
-        address = self.__get_current_address()
-        if self.__rel_table.contains_vaddr(address):
-            function = self.__rel_table.get_relocation(address).get_function_name()
+        self.__r2.cmd('aes')
+
+        new_address = int(self.__get_current_address(), 16)
+        if self.__rel_table.contains_vaddr(new_address):
+            function = self.__rel_table.get_relocation(new_address).get_function_name()
             self.__emulate_function(function)
+
+        if self.__instruction.is_pushing_arguments():
+            self.__args_stack.append(self.__instruction)        
         else:
-            self.__r2.cmd('aes')
+            self.__args_stack.clear()
 
     def __inform_step(self):
         params = self.__instruction.get_params()
         if self.__instruction.is_call():
-            self.__output.write_call(params)
+            arguments = self.__recover_possible_arguments()
+            self.__output.write_call(params[-1], arguments)
         elif self.__instruction.is_return():
             self.__output.write_return()
 
@@ -99,10 +106,10 @@ class Emulator:
                     self.__write_bytes(result.value, address)
                     result.value = address
                 typed = 'address'
-            if util.is_address(target):
-                self.__write_bytes(result.value, target)
-            else:
+            if util.is_register(target):
                 self.__set_register(target, result.value)
+            else:
+                self.__write_bytes(result.value, target)
 
     def __execute_return(self):
         self.__r2.cmd('ae esp,[4],eip,=,4,esp,+=')
@@ -124,13 +131,23 @@ class Emulator:
             arguments[i].value = value
         return arguments
 
+    def __recover_possible_arguments(self):
+        arguments = []
+        esp = int(self.__get_register('esp'), 16)
+        for i in range(len(self.__args_stack)):
+            address = esp + 4*i
+            value = self.__get_value_from_address(address)
+            arg = FunctionArgument(f'arg{i+1}', FunctionArgument.UNDEFINED, value)
+            arguments.append(arg)
+        return arguments
+
     def setup_tcp_server(self, port):
         self.__r2.cmd(f'& .:{port}')
 
     def run(self):
         while not self.__emulation_finished:
             self.__get_instruction()
-            self.__step()
             self.__inform_step()
-            if self.__get_current_address() == self.__last_instruction.address:
+            self.__step()
+            if self.__instruction.address == self.__last_instruction.address:
                 self.__emulation_finished = True

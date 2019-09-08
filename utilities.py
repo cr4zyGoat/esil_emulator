@@ -1,5 +1,8 @@
-PE_FORMATS = ['acm', 'ax', 'cpl', 'dll', 'drv', 'efi', 'exe', 'mui', 'ocx', 'scr', 'sys', 'tsp']
-CMP_INSTRUCTIONS = ['cmp', 'test']
+PE_FORMATS = {'acm', 'ax', 'cpl', 'dll', 'drv', 'efi', 'exe', 'mui', 'ocx', 'scr', 'sys', 'tsp'}
+CMP_OPERATIONS = {'cmp', 'test'}
+
+def is_register(value):
+	return type(value) == str and not value.isnumeric() and len(value) <= 3
 
 def is_address(value):
 	return type(value) == int or value.isnumeric() or value[:2] == '0x'
@@ -13,5 +16,5 @@ def is_zero(value):
 		if value[:2] == '0x' and int(value, 16) == 0: return True
 	return value == 0
 
-def is_comparison(instruction):
-	return instruction.lower() in CMP_INSTRUCTIONS
+def is_comparison(operation):
+	return operation in CMP_OPERATIONS

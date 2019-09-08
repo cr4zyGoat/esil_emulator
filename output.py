@@ -15,7 +15,7 @@ class Output:
 
 	def write_reallocated_call(self, function_name, arguments=None):
 		arg_str = reduce(lambda r, i: f'{r}, {i}', arguments) if arguments else ''
-		message = f'call {function_name} ({arg_str})'
+		message = f'jmp {function_name} ({arg_str})'
 		self.__write(message)
 	
 	def write_return(self, results=None):
