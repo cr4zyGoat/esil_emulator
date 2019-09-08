@@ -20,14 +20,11 @@ class Emulator:
         self.__get_last_instruction()
 
     def __set_environment(self):
-        self.__r2.cmd('aaa')
+        self.__r2.cmd('aaaa')
         self.__r2.cmd('e asm.emu=true')
-        self.__r2.cmd('e asm.esil=true')
         self.__r2.cmd('e io.cache=true')
         self.__r2.cmd('e esil.stack.depth=64')
-        self.__r2.cmd('aei')
         self.__r2.cmd('aeim {m.address} {m.size}'.format(m=self.__memory_stack))
-        self.__r2.cmd('aeip')
 
     def __set_relocations_table(self):
         relocations = self.__r2.cmdj('irj')
@@ -126,6 +123,9 @@ class Emulator:
                 value = int(value, 16)
             arguments[i].value = value
         return arguments
+
+    def setup_tcp_server(self, port):
+        self.__r2.cmd(f'& .:{port}')
 
     def run(self):
         while not self.__emulation_finished:
