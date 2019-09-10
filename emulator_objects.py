@@ -39,7 +39,8 @@ class Relocation:
         self.paddr = content.get('paddr', '')
 
     def get_function_name(self):
-        return re.search('.+\\.dll_+([\\w_]+)', self.name).group(1) or self.name.split('_')[-1]
+        regex = re.search('.+\\.dll_+([\\w_]+)', self.name)
+        return regex.group(1) if regex else self.name.split('_')[-1]
 
 class RelocationTable:
     def __init__(self, relocations):
