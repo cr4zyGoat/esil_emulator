@@ -6,7 +6,7 @@ from memory import Memory
 from emulator import Emulator
 from output import Output
 from api.container import ApiContainer
-from api import winbase, processthreadsapi, c
+from api import winbase, processthreadsapi, heapapi, c
 
 
 def get_arguments():
@@ -34,6 +34,7 @@ if __name__ == "__main__":
     api_container.load_api(winbase.WinBase())
     api_container.load_api(processthreadsapi.Processthreadsapi())
     api_container.load_api(c.CApi())
+    api_container.load_api(heapapi.HeapApi())
 
     output.write_title('unpacking')
     executable = unpack(args.file)
