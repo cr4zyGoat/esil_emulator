@@ -59,6 +59,9 @@ class Emulator:
     def __get_string_from_address(self, address):
         return self.__r2.cmd(f'ps @{address}').strip()
 
+    def __get_value(self, value):
+        return self.__get_register(value) if util.is_register(value) else self.__get_value_from_address(value)
+
     def __step(self):
         self.__r2.cmd('aes')
 
@@ -73,12 +76,17 @@ class Emulator:
             self.__args_stack.clear()
 
     def __inform_step(self):
-        params = self.__instruction.get_params()
         if self.__instruction.is_call():
+            function = util.clean_argument(self.__instruction.get_asm_params()[0])
             arguments = self.__recover_possible_arguments()
-            self.__output.write_call(params[-1], arguments)
+            self.__output.write_call(function, arguments)
         elif self.__instruction.is_return():
             self.__output.write_return()
+        elif self.__instruction.is_comparison():
+            params = self.__instruction.get_opcode_params()
+            operands = list(map(lambda item: util.clean_argument(item), params))
+            values = list(map(lambda item: self.__get_value(item), operands))
+            self.__output.write_comparison(self.__instruction.get_operation(), operands, values)
 
     def __emulate_function(self, function_name):
         arguments, results = [], []

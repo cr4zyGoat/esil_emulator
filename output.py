@@ -27,6 +27,6 @@ class Output:
 		self.write_code(message)
 		self.__indentation -= 1
 
-	def write_comparison(self, operation, params, zf):
-		message = f'{operation} {params}\t# zf={zf}'
+	def write_comparison(self, operation, operands, values):
+		message = f'{operation} {operands[0]} (={values[0]}), {operands[1]} (={values[1]})'
 		self.write_code(message)

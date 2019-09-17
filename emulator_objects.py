@@ -6,6 +6,7 @@ class Instruction:
         self.address = content.get('offset', '')
         self.esil = content.get('esil', '')
         self.asm = content.get('disasm', '')
+        self.opcode = content.get('opcode', '')
         self.type = content.get('type', '')
 
         self.__operation = self.asm.split()[0] if self.asm else None
@@ -13,11 +14,11 @@ class Instruction:
     def get_operation(self):
         return self.__operation
 
-    def get_params(self):
-        return self.asm.split()[1:]
+    def get_asm_params(self):
+        return self.asm.split(' ', 1)[1].split(', ')
 
-    def is_valid(self):
-        return self.type == 'invalid'
+    def get_opcode_params(self):
+        return self.opcode.split(' ', 1)[1].split(', ')
 
     def is_call(self):
         return self.__operation == 'call'

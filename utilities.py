@@ -1,3 +1,5 @@
+import re
+
 PE_FORMATS = {'acm', 'ax', 'cpl', 'dll', 'drv', 'efi', 'exe', 'mui', 'ocx', 'scr', 'sys', 'tsp'}
 CMP_OPERATIONS = {'cmp', 'test'}
 
@@ -18,3 +20,7 @@ def is_zero(value):
 
 def is_comparison(operation):
 	return operation in CMP_OPERATIONS
+
+def clean_argument(argument):
+	match = re.search('\\[(.*)\\]', argument)
+	return match.group(1) if match else argument
